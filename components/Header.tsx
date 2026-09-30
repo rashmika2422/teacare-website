@@ -47,7 +47,7 @@ export default function Header() {
           <li><a href="/about">About Us</a></li>
           <li><a href="/#services">Services</a></li>
           <li><a href="/contact">Contact</a></li>
-          <li><a href="/admin" style={{ color: '#f39c12', fontWeight: 600 }}>Admin Portal</a></li>
+         
           <li><a href="/#appointment" className="btn-nav">Book Appointment</a></li>
         </ul>
         <div className="burger">

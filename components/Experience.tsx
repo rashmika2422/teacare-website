@@ -25,7 +25,7 @@ export default function Experience() {
             }}>
               <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', background: 'linear-gradient(135deg, rgba(243,156,18,0.2), transparent)', zIndex: 1 }} />
               <img 
-                src="/assets/images/catering_showcase_custom.jpg" 
+                src="/assets/images/catering_showcase_custom.jpeg" 
                 alt="Five-Star Executive Banquet" 
                 className="hover-scale-img"
                 style={{
