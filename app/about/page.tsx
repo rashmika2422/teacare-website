@@ -20,7 +20,7 @@ export default function AboutPage() {
       <section className="about-hero" style={{
         position: 'relative',
         padding: '160px 8% 100px',
-        backgroundImage: 'linear-gradient(180deg, rgba(15,20,28,0.5) 0%, rgba(15,20,28,0.7) 60%, var(--dark-gray) 100%), url("/assets/images/81997842-2d94-49bc-aeb4-e445d56c8cb0.JPG")',
+        backgroundImage: 'linear-gradient(180deg, rgba(15,20,28,0.5) 0%, rgba(15,20,28,0.7) 60%, var(--dark-gray) 100%), url("/assets/images/aboutus_background.jpeg")',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundAttachment: 'fixed',
