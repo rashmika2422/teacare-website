@@ -111,25 +111,25 @@ export default function Contact() {
                 {
                   icon: 'fa-map-location-dot',
                   label: 'Office Address',
-                  val: '124, Lotus Road, Colombo 00100, Sri Lanka',
+                  val: '663/4, Manaka Road , Ihala Biyanwila, Kadawatha',
                 },
 
                 {
                   icon: 'fa-phone-volume',
                   label: 'Direct Helpline',
-                  val: '+94 11 234 5678 / +94 77 123 4567',
+                  val: '+94 11 2923900 / +94 74 1331010',
                 },
 
                 {
                   icon: 'fa-envelope-open-text',
                   label: 'Email Correspondence',
-                  val: 'info@teacareevents.com',
+                  val: 'teacare.sl@gmail.com',
                 },
 
                 {
                   icon: 'fa-business-time',
                   label: 'Executive Hours',
-                  val: 'Mon - Fri: 8:30 AM - 5:30 PM (SLT)',
+                  val: 'Mon - Sat: 8:00 AM - 6:00 PM (SLT)',
                 },
               ].map((item) => (
                 <div
