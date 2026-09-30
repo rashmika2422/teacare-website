@@ -97,7 +97,7 @@ export default function AboutPage() {
                 autoPlay loop muted playsInline
                 style={{ width: '100%', height: '100%', objectFit: 'cover' }}
               >
-                <source src="/assets/images/53f44df1-c5ad-44fe-be6b-7127cb65810e.MP4" type="video/mp4" />
+                <source src="/assets/images/aboutus.MP4" type="video/mp4" />
               </video>
             </div>
             
