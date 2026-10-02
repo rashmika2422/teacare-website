@@ -7,7 +7,7 @@ export default function Contact() {
   const [loading, setLoading] = useState(false);
 
   const API_URL =
-    process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+    process.env.NEXT_PUBLIC_API_URL || '';
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

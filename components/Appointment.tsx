@@ -43,7 +43,7 @@ export default function Appointment() {
   // Local development -> localhost
   // Production -> Render URL from Vercel environment variable
   const API_URL =
-    process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+    process.env.NEXT_PUBLIC_API_URL || '';
 
   // Update summary badge whenever date or time changes
   useEffect(() => {
