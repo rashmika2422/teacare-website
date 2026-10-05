@@ -68,7 +68,7 @@ export default function AboutPage() {
             Who We Are
           </span>
           <h1 style={{ fontFamily: 'Playfair Display, serif', fontSize: '4rem', color: '#ffffff', margin: '0 0 25px', lineHeight: 1.1 }}>
-            The Story of <br/><span className="gold-gradient-text">Teacare Services</span>
+            The Story of <br/><span className="gold-gradient-text">Teacare Service PVT LTD</span>
           </h1>
           <p style={{ color: '#cbd5e1', fontSize: '1.2rem', lineHeight: 1.6, fontWeight: 300 }}>
             Dedicated to engineering flawless, high-stakes corporate hospitality experiences with Sri Lankan warmth and international precision.
@@ -125,7 +125,7 @@ export default function AboutPage() {
             <div style={{ width: '60px', height: '3px', background: 'linear-gradient(90deg, #f39c12, #e67e22)', marginBottom: '30px', borderRadius: '2px' }} />
             
             <p style={{ color: '#a0aec0', fontSize: '1.05rem', lineHeight: 1.8, marginBottom: '25px' }}>
-              At <strong style={{ color: '#fff' }}>Teacare Services Pvt Ltd</strong>, we treat every corporate event as a vital milestone. From high-stakes board room meetings to multi-day summits, our team combines Sommelier-grade tea selection with international protocol standards.
+              At <strong style={{ color: '#fff' }}>Teacare Service PVT LTD Pvt Ltd</strong>, we treat every corporate event as a vital milestone. From high-stakes board room meetings to multi-day summits, our team combines Sommelier-grade tea selection with international protocol standards.
             </p>
             <p style={{ color: '#a0aec0', fontSize: '1.05rem', lineHeight: 1.8, marginBottom: '40px' }}>
               Our commitment goes beyond catering; it's about curating an atmosphere that reflects your brand's prestige and values, ensuring every delegate leaves with a lasting impression of excellence.

@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
   title: {
     default:
-      'Teacare Services PVT LTD | Corporate Events, Catering & Tea Services Sri Lanka',
+      'Teacare Service PVT LTD | Corporate Events, Catering & Tea Services Sri Lanka',
     template: '%s | Teacare Service PVT LTD',
   },
 
@@ -76,7 +76,6 @@ export const metadata: Metadata = {
   keywords: [
     'Teacare',
     'Teacare Service PVT LTD',
-    'Teacare Services',
     'Teacare Sri Lanka',
 
     'corporate events Sri Lanka',

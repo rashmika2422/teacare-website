@@ -461,7 +461,7 @@ export default function Hero() {
             maxWidth: '680px',
           }}
         >
-          TeaCare Services delivers professional corporate event planning,
+          Teacare Service PVT LTD delivers professional corporate event planning,
           event management, catering and hospitality experiences across Sri
           Lanka — from executive high teas and corporate buffets to large-scale
           gala dinners and enterprise events.

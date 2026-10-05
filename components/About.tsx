@@ -34,7 +34,7 @@ export default function About() {
           <div className="about-text-content">
             <h3 data-reveal style={revealStyle(0.2)}>Elevating Hospitality Standards For High-End Enterprise Events</h3>
             <p className="about-description" data-reveal style={revealStyle(0.3)}>
-              At <strong>Teacare Servicess Pvt Ltd</strong>, we understand that an institutional gathering or cooperative milestone is a direct extension of your corporate market reputation.
+              At <strong>Teacare Service PVT LTD</strong>, we understand that an institutional gathering or cooperative milestone is a direct extension of your corporate market reputation.
             </p>
             <p className="about-description" data-reveal style={revealStyle(0.35)}>
               Whether managing a sophisticated executive high tea session for international shareholders or arranging a sprawling, top-tier corporate buffet menu for thousands of delegates, our dedicated team ensures your event flows flawlessly.

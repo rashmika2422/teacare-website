@@ -37,8 +37,8 @@ export default function Header() {
     <header>
       <div className="logo">
         <a href="/" style={{ display: 'flex', alignItems: 'center', color: 'inherit', textDecoration: 'none' }}>
-          <img src="/assets/images/IMG_8664.jpeg" alt="Tea Care Logo" className="logo-img" />
-          Teacare Services Pvt Ltd
+          <img src="/assets/images/IMG_8664.jpeg" alt="Teacare Service PVT LTD Logo" className="logo-img" />
+          Teacare Service PVT LTD
         </a>
       </div>
       <nav>

@@ -233,7 +233,7 @@ export default function AdminDashboard() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           customerEmail: selectedItem.email,
-          subject: `Re: ${selectedItem.eventType} - Teacare Events`,
+          subject: `Re: ${selectedItem.eventType} - Teacare Service PVT LTD`,
           replyText: replyText,
         }),
       });

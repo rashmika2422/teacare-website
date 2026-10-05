@@ -1,5 +1,5 @@
 =========================================================
-TEACARE EVENTS PVT. LTD. - WEBSITE MAINTENANCE GUIDE
+TEACARE SERVICE PVT LTD - WEBSITE MAINTENANCE GUIDE
 =========================================================
 Hello! This guide is written for beginners. It explains exactly how to change text, update images, and maintain your website without breaking anything. 
 
