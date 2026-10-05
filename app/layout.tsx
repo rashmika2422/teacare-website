@@ -70,7 +70,7 @@ export const metadata: Metadata = {
   category: 'Event Management',
 
   icons: {
-    icon: '/favicon.ico',
+    icon: '/image02.PNG',
   },
 
   keywords: [
