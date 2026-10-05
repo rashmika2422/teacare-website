@@ -20,7 +20,7 @@ export default function Home() {
       <Header />
 
       <section
-        aria-label="Teacare Service PVT LTD introduction"
+        aria-label="Teacare Services Pvt Ltd introduction"
         style={{
           position: 'absolute',
           width: '1px',
@@ -33,10 +33,10 @@ export default function Home() {
           border: 0,
         }}
       >
-        <h1>Teacare Service PVT LTD - Corporate Event Planning in Sri Lanka</h1>
+        <h1>Teacare Services Pvt Ltd - Corporate Event Planning in Sri Lanka</h1>
 
         <p>
-          Teacare Service PVT LTD provides professional corporate event planning,
+          Teacare Services Pvt Ltd provides professional corporate event planning,
           event management, catering and hospitality services in Sri Lanka.
           Our services include executive high teas, corporate buffets,
           gala dinners, business events and customized corporate functions.

@@ -99,7 +99,7 @@ export default function Contact() {
             data-aos="fade-right"
             data-aos-duration="1000"
           >
-            <h3>Teacare Headquarters</h3>
+            <h3>Teacare Services Pvt Ltd Headquarters</h3>
 
             <p className="contact-sub">
               Visit our offices or connect with us directly

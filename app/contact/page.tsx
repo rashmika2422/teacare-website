@@ -49,7 +49,7 @@ export default function ContactPage() {
             Executive Suite Communication
           </span>
           <h1 style={{ fontFamily: 'Playfair Display, serif', fontSize: '4rem', color: '#ffffff', margin: '0 0 25px', lineHeight: 1.1 }}>
-            Contact <br/><span className="gold-gradient-text">Teacare Headquarters</span>
+            Contact <br/><span className="gold-gradient-text">Teacare Services Pvt Ltd Headquarters</span>
           </h1>
           <p style={{ color: '#cbd5e1', fontSize: '1.2rem', lineHeight: 1.6, fontWeight: 300 }}>
             Reach out directly to our lead organizers, schedule consultation briefings, or inquire about custom corporate hospitality packages.

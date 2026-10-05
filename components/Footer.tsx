@@ -52,7 +52,7 @@ export default function Footer() {
         </div>
 
         <p>
-          &copy; {new Date().getFullYear()} Teacare Service PVT LTD All rights reserved.
+          &copy; {new Date().getFullYear()} Teacare Services Pvt Ltd All rights reserved.
         </p>
 
         <p style={{ fontSize: '0.75rem', color: '#4a5568' }}>

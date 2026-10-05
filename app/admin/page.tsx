@@ -233,7 +233,7 @@ export default function AdminDashboard() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           customerEmail: selectedItem.email,
-          subject: `Re: ${selectedItem.eventType} - Teacare Service PVT LTD`,
+          subject: `Re: ${selectedItem.eventType} - Teacare Services Pvt Ltd`,
           replyText: replyText,
         }),
       });
@@ -257,7 +257,7 @@ export default function AdminDashboard() {
       <header className="admin-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingBottom: '20px', borderBottom: '1px solid rgba(255,255,255,0.1)', position: 'relative' }}>
         <div>
           <h1 style={{ fontFamily: 'Playfair Display, serif', fontSize: '1.8rem', color: '#f39c12', margin: 0 }}>
-            Teacare Executive Dashboard
+            Teacare Services Pvt Ltd Executive Dashboard
           </h1>
           <p style={{ fontSize: '0.85rem', color: '#cbd5e1', margin: '4px 0 0' }}>
             Real-time Appointment &amp; Inquiry Operations Console

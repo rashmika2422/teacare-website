@@ -68,7 +68,7 @@ export default function AboutPage() {
             Who We Are
           </span>
           <h1 style={{ fontFamily: 'Playfair Display, serif', fontSize: '4rem', color: '#ffffff', margin: '0 0 25px', lineHeight: 1.1 }}>
-            The Story of <br/><span className="gold-gradient-text">Teacare Service PVT LTD</span>
+            The Story of <br/><span className="gold-gradient-text">Teacare Services Pvt Ltd</span>
           </h1>
           <p style={{ color: '#cbd5e1', fontSize: '1.2rem', lineHeight: 1.6, fontWeight: 300 }}>
             Dedicated to engineering flawless, high-stakes corporate hospitality experiences with Sri Lankan warmth and international precision.
@@ -125,7 +125,7 @@ export default function AboutPage() {
             <div style={{ width: '60px', height: '3px', background: 'linear-gradient(90deg, #f39c12, #e67e22)', marginBottom: '30px', borderRadius: '2px' }} />
             
             <p style={{ color: '#a0aec0', fontSize: '1.05rem', lineHeight: 1.8, marginBottom: '25px' }}>
-              At <strong style={{ color: '#fff' }}>Teacare Service PVT LTD Pvt Ltd</strong>, we treat every corporate event as a vital milestone. From high-stakes board room meetings to multi-day summits, our team combines Sommelier-grade tea selection with international protocol standards.
+              At <strong style={{ color: '#fff' }}>Teacare Services Pvt Ltd</strong>, we treat every corporate event as a vital milestone. From high-stakes board room meetings to multi-day summits, our team combines Sommelier-grade tea selection with international protocol standards.
             </p>
             <p style={{ color: '#a0aec0', fontSize: '1.05rem', lineHeight: 1.8, marginBottom: '40px' }}>
               Our commitment goes beyond catering; it's about curating an atmosphere that reflects your brand's prestige and values, ensuring every delegate leaves with a lasting impression of excellence.
@@ -183,7 +183,7 @@ export default function AboutPage() {
       <section style={{ padding: '80px 8% 120px', maxWidth: '1200px', margin: '0 auto' }}>
         <div style={{ textAlign: 'center', marginBottom: '50px' }}>
           <span style={{ color: '#f39c12', fontWeight: 700, letterSpacing: '2px', textTransform: 'uppercase', fontSize: '0.85rem', display: 'block', marginBottom: '15px' }}>
-            The Backbone of Teacare
+            The Backbone of Teacare Services Pvt Ltd
           </span>
           <h2 style={{ fontFamily: 'Playfair Display, serif', fontSize: '2.8rem', color: '#ffffff' }}>
             Meet <span className="gold-gradient-text">Our Crew</span>
@@ -236,7 +236,7 @@ export default function AboutPage() {
             pointerEvents: 'none'
           }}>
             <h3 style={{ color: '#fff', fontSize: '2.2rem', fontFamily: 'Playfair Display, serif', margin: 0, textShadow: '0 4px 15px rgba(0,0,0,0.8)' }}>
-              Teacare Operational Team
+              Teacare Services Pvt Ltd Operational Team
             </h3>
             <p style={{ color: '#f39c12', fontWeight: 600, margin: '5px 0 0', textTransform: 'uppercase', letterSpacing: '1px' }}>
               The Engine of Excellence

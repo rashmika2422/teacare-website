@@ -1,6 +1,6 @@
-# 📋 Teacare Service PVT LTD — Developer & Maintenance Guide
+# 📋 Teacare Services Pvt Ltd — Developer & Maintenance Guide
 
-Welcome to the official developer and administrator guide for the **Teacare Service PVT LTD** website. This document covers how to run, modify, and deploy the platform.
+Welcome to the official developer and administrator guide for the **Teacare Services Pvt Ltd** website. This document covers how to run, modify, and deploy the platform.
 
 ---
 
@@ -262,7 +262,7 @@ To update the address, phone, or email shown in the Contact section:
 
 ---
 
-*© 2026 Teacare Service PVT LTD. All rights reserved.*
+*© 2026 Teacare Services Pvt Ltd. All rights reserved.*
 
 ---
 

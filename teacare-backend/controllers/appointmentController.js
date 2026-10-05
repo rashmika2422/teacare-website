@@ -38,7 +38,7 @@ export const createAppointment = async (req, res, next) => {
             adminEmailHtml = `
                 <div style="max-width: 600px; margin: 0 auto; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #1a202c; border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
                     <div style="background-color: #1a202c; padding: 25px; text-align: center; border-bottom: 3px solid #6c5ce7;">
-                        <h2 style="color: #ffffff; margin: 0; font-family: Georgia, serif; font-size: 22px; letter-spacing: 1px;">Teacare Service PVT LTD</h2>
+                        <h2 style="color: #ffffff; margin: 0; font-family: Georgia, serif; font-size: 22px; letter-spacing: 1px;">Teacare Services Pvt Ltd</h2>
                         <p style="color: #cbd5e1; margin: 5px 0 0 0; font-size: 11px; text-transform: uppercase; letter-spacing: 2px;">📩 General Inquiry Received</p>
                     </div>
                     <div style="padding: 30px; background-color: #ffffff;">
@@ -58,16 +58,16 @@ export const createAppointment = async (req, res, next) => {
                         </div>
                     </div>
                     <div style="background-color: #f7fafc; padding: 15px 25px; text-align: center; border-top: 1px solid #edf2f7;">
-                        <p style="color: #a0aec0; margin: 0; font-size: 11px;">Automated notification dispatched from Teacare Service PVT LTD.<br>&copy; 2026 Teacare Service PVT LTD All rights reserved.</p>
+                        <p style="color: #a0aec0; margin: 0; font-size: 11px;">Automated notification dispatched from Teacare Services Pvt Ltd.<br>&copy; 2026 Teacare Services Pvt Ltd All rights reserved.</p>
                     </div>
                 </div>
             `;
 
-            customerSubject = `📩 Your Inquiry Has Been Received - Teacare Service PVT LTD`;
+            customerSubject = `📩 Your Inquiry Has Been Received - Teacare Services Pvt Ltd`;
             customerEmailHtml = `
                 <div style="max-width: 600px; margin: 0 auto; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #1a202c; border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
                     <div style="background-color: #1a202c; padding: 25px; text-align: center; border-bottom: 3px solid #6c5ce7;">
-                        <h2 style="color: #ffffff; margin: 0; font-family: Georgia, serif; font-size: 22px; letter-spacing: 1px;">Teacare Service PVT LTD</h2>
+                        <h2 style="color: #ffffff; margin: 0; font-family: Georgia, serif; font-size: 22px; letter-spacing: 1px;">Teacare Services Pvt Ltd</h2>
                         <p style="color: #cbd5e1; margin: 5px 0 0 0; font-size: 11px; text-transform: uppercase; letter-spacing: 2px;">📩 General Inquiry Confirmation</p>
                     </div>
                     <div style="padding: 30px; background-color: #ffffff;">
@@ -80,7 +80,7 @@ export const createAppointment = async (req, res, next) => {
                         <p style="font-size: 14px; line-height: 1.6; color: #4a5568; margin-bottom: 0;">A representative from our executive board of directors will review your inquiry and contact you within 24 business hours.</p>
                     </div>
                     <div style="background-color: #f7fafc; padding: 15px 25px; text-align: center; border-top: 1px solid #edf2f7;">
-                        <p style="color: #a0aec0; margin: 0; font-size: 11px;">&copy; 2026 Teacare Service PVT LTD All rights reserved.</p>
+                        <p style="color: #a0aec0; margin: 0; font-size: 11px;">&copy; 2026 Teacare Services Pvt Ltd All rights reserved.</p>
                     </div>
                 </div>
             `;
@@ -89,7 +89,7 @@ export const createAppointment = async (req, res, next) => {
             adminEmailHtml = `
                 <div style="max-width: 600px; margin: 0 auto; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #1a202c; border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
                     <div style="background-color: #1a202c; padding: 25px; text-align: center; border-bottom: 3px solid #f39c12;">
-                        <h2 style="color: #ffffff; margin: 0; font-family: Georgia, serif; font-size: 22px; letter-spacing: 1px;">Teacare Service PVT LTD</h2>
+                        <h2 style="color: #ffffff; margin: 0; font-family: Georgia, serif; font-size: 22px; letter-spacing: 1px;">Teacare Services Pvt Ltd</h2>
                         <p style="color: #cbd5e1; margin: 5px 0 0 0; font-size: 11px; text-transform: uppercase; letter-spacing: 2px;">📅 Appointment Booking Received</p>
                     </div>
                     <div style="padding: 30px; background-color: #ffffff;">
@@ -112,16 +112,16 @@ export const createAppointment = async (req, res, next) => {
                         </div>
                     </div>
                     <div style="background-color: #f7fafc; padding: 15px 25px; text-align: center; border-top: 1px solid #edf2f7;">
-                        <p style="color: #a0aec0; margin: 0; font-size: 11px;">Automated notification dispatched from Teacare Service PVT LTD.<br>&copy; 2026 Teacare Service PVT LTD All rights reserved.</p>
+                        <p style="color: #a0aec0; margin: 0; font-size: 11px;">Automated notification dispatched from Teacare Services Pvt Ltd.<br>&copy; 2026 Teacare Services Pvt Ltd All rights reserved.</p>
                     </div>
                 </div>
             `;
 
-            customerSubject = `📅 Appointment Confirmed - ${date} at ${timeSlot} | Teacare Service PVT LTD`;
+            customerSubject = `📅 Appointment Confirmed - ${date} at ${timeSlot} | Teacare Services Pvt Ltd`;
             customerEmailHtml = `
                 <div style="max-width: 600px; margin: 0 auto; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #1a202c; border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
                     <div style="background-color: #1a202c; padding: 25px; text-align: center; border-bottom: 3px solid #f39c12;">
-                        <h2 style="color: #ffffff; margin: 0; font-family: Georgia, serif; font-size: 22px; letter-spacing: 1px;">Teacare Service PVT LTD</h2>
+                        <h2 style="color: #ffffff; margin: 0; font-family: Georgia, serif; font-size: 22px; letter-spacing: 1px;">Teacare Services Pvt Ltd</h2>
                         <p style="color: #cbd5e1; margin: 5px 0 0 0; font-size: 11px; text-transform: uppercase; letter-spacing: 2px;">📅 Appointment Booking Confirmed</p>
                     </div>
                     <div style="padding: 30px; background-color: #ffffff;">
@@ -140,7 +140,7 @@ export const createAppointment = async (req, res, next) => {
                         <p style="font-size: 14px; line-height: 1.6; color: #4a5568; margin-bottom: 0;">Our lead event coordinator will review your corporate requirements and contact you within 24 business hours.</p>
                     </div>
                     <div style="background-color: #f7fafc; padding: 15px 25px; text-align: center; border-top: 1px solid #edf2f7;">
-                        <p style="color: #a0aec0; margin: 0; font-size: 11px;">&copy; 2026 Teacare Service PVT LTD All rights reserved.</p>
+                        <p style="color: #a0aec0; margin: 0; font-size: 11px;">&copy; 2026 Teacare Services Pvt Ltd All rights reserved.</p>
                     </div>
                 </div>
             `;
@@ -149,7 +149,7 @@ export const createAppointment = async (req, res, next) => {
         if (adminEmails.length > 0 && process.env.RESEND_API_KEY) {
             await Promise.all(adminEmails.map(adminEmail =>
                 resend.emails.send({
-                    from: 'Teacare Service PVT LTD <onboarding@resend.dev>',
+                    from: 'Teacare Services Pvt Ltd <onboarding@resend.dev>',
                     reply_to: adminEmails[0],
                     to: adminEmail,
                     subject: adminSubject,
@@ -161,7 +161,7 @@ export const createAppointment = async (req, res, next) => {
         if (email && process.env.RESEND_API_KEY) {
             try {
                 await resend.emails.send({
-                    from: 'Teacare Service PVT LTD <onboarding@resend.dev>',
+                    from: 'Teacare Services Pvt Ltd <onboarding@resend.dev>',
                     reply_to: adminEmails[0] || 'info@teacareevents.com',
                     to: email,
                     subject: customerSubject,
@@ -203,12 +203,12 @@ export const replyToAppointment = async (req, res, next) => {
         const { customerEmail, subject, replyText } = req.body;
         
         await resend.emails.send({
-            from: 'Teacare Service PVT LTD <onboarding@resend.dev>',
+            from: 'Teacare Services Pvt Ltd <onboarding@resend.dev>',
             reply_to: process.env.NOTIFICATION_EMAIL || 'info@teacareevents.com',
             to: customerEmail,
-            subject: subject || 'Reply from Teacare Service PVT LTD Administration',
+            subject: subject || 'Reply from Teacare Services Pvt Ltd Administration',
             html: `<div style="font-family: Arial, sans-serif; padding: 20px; line-height: 1.6; color: #1a202c;">
-                    <h3>Message from TeaCare Administration</h3>
+                    <h3>Message from Teacare Services Pvt Ltd Administration</h3>
                     <p style="white-space: pre-wrap;">${replyText}</p>
                    </div>`
         });

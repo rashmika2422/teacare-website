@@ -1,5 +1,5 @@
 =========================================================
-TEACARE SERVICE PVT LTD - WEBSITE MAINTENANCE GUIDE
+Teacare Services Pvt Ltd - WEBSITE MAINTENANCE GUIDE
 =========================================================
 Hello! This guide is written for beginners. It explains exactly how to change text, update images, and maintain your website without breaking anything. 
 
@@ -36,7 +36,7 @@ STEP 2: EDIT THE TEXT
 ⚠ GOLDEN RULES FOR EDITING TEXT ⚠
 - Rule 1: DO NOT delete the HTML tags around the text. 
   (Example: Only change the word inside <p>Old Text</p> to <p>New Text</p>)
-- Rule 2: If you want to use an apostrophe (like the word "Don't" or "Teacare's"), you should type it like this: Teacare&apos;s  OR you must put double quotes around the whole sentence.
+- Rule 2: If you want to use an apostrophe (like the word "Don't" or "Teacare Services Pvt Ltd's"), you should type it like this: Teacare Services Pvt Ltd&apos;s  OR you must put double quotes around the whole sentence.
 - Rule 3: Save your file ([Ctrl + S] or [Cmd + S]) to see the changes.
 
 

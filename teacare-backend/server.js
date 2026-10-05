@@ -26,13 +26,13 @@ app.use('/api/appointments', appointmentRoutes);
 app.get('/api/health', (req, res) => {
   res.status(200).json({
     success: true,
-    service: 'TeaCare API',
+    service: 'Teacare Services Pvt Ltd API',
   });
 });
 
 app.get('/', (req, res) => {
   res.status(200).json({
-    status: 'TeaCare API running',
+    status: 'Teacare Services Pvt Ltd API running',
     version: '2.0',
   });
 });
@@ -42,5 +42,5 @@ app.use(errorHandler);
 const PORT = process.env.PORT || 8000;
 
 app.listen(PORT, () => {
-  console.log(`TeaCare API running on port ${PORT}`);
+  console.log(`Teacare Services Pvt Ltd API running on port ${PORT}`);
 });

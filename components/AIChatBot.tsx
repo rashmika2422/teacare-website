@@ -6,7 +6,7 @@ type Message = { id: string; sender: 'bot' | 'user'; text: string; actionLink?: 
 const INITIAL_MESSAGE: Message = {
   id: 'init',
   sender: 'bot',
-  text: 'Hello! I am your Teacare Virtual Concierge. How can I assist you in planning your corporate event today?'
+  text: 'Hello! I am your Teacare Services Pvt Ltd Virtual Concierge. How can I assist you in planning your corporate event today?'
 };
 
 export default function AIChatBot() {
@@ -110,7 +110,7 @@ export default function AIChatBot() {
             <i className="fa-solid fa-robot" />
           </div>
           <div className="chatbot-header-text">
-            <h4>Teacare Concierge</h4>
+            <h4>Teacare Services Pvt Ltd Concierge</h4>
             <span className="status">● Online</span>
           </div>
         </div>

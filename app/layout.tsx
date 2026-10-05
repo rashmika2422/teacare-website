@@ -9,24 +9,24 @@ export const metadata: Metadata = {
 
   title: {
     default:
-      'Teacare Service PVT LTD | Corporate Events, Catering & Tea Services Sri Lanka',
-    template: '%s | Teacare Service PVT LTD',
+      'Teacare Services Pvt Ltd | Corporate Events, Catering & Tea Services Sri Lanka',
+    template: '%s | Teacare Services Pvt Ltd',
   },
 
   description:
-    'Teacare Service PVT LTD provides corporate event organising, event management, corporate catering, executive high tea, tea services, corporate buffets and gala dinners across Sri Lanka.',
+    'Teacare Services Pvt Ltd provides corporate event organising, event management, corporate catering, executive high tea, tea services, corporate buffets and gala dinners across Sri Lanka.',
 
-  applicationName: 'Teacare Service PVT LTD',
+  applicationName: 'Teacare Services Pvt Ltd',
 
   authors: [
     {
-      name: 'Teacare Service PVT LTD',
+      name: 'Teacare Services Pvt Ltd',
       url: 'https://www.teacareservices.com',
     },
   ],
 
-  creator: 'Teacare Service PVT LTD',
-  publisher: 'Teacare Service PVT LTD',
+  creator: 'Teacare Services Pvt Ltd',
+  publisher: 'Teacare Services Pvt Ltd',
 
   alternates: {
     canonical: '/',
@@ -36,10 +36,10 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_LK',
     url: 'https://www.teacareservices.com',
-    siteName: 'Teacare Service PVT LTD',
+    siteName: 'Teacare Services Pvt Ltd',
 
     title:
-      'Teacare Service PVT LTD | Corporate Events, Catering & Tea Services Sri Lanka',
+      'Teacare Services Pvt Ltd | Corporate Events, Catering & Tea Services Sri Lanka',
 
     description:
       'Professional corporate event organising, event management, corporate catering, executive high tea and tea services across Sri Lanka.',
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
 
-    title: 'Teacare Service PVT LTD | Corporate Events Sri Lanka',
+    title: 'Teacare Services Pvt Ltd | Corporate Events Sri Lanka',
 
     description:
       'Corporate event organising, catering, high tea, tea services and event management across Sri Lanka.',
@@ -74,9 +74,8 @@ export const metadata: Metadata = {
   },
 
   keywords: [
-    'Teacare',
-    'Teacare Service PVT LTD',
-    'Teacare Sri Lanka',
+    'Teacare Services Pvt Ltd',
+    'Teacare Services Pvt Ltd Sri Lanka',
 
     'corporate events Sri Lanka',
     'corporate event organiser Sri Lanka',
@@ -122,8 +121,8 @@ const structuredData = {
       '@type': 'Organization',
       '@id': 'https://www.teacareservices.com/#organization',
 
-      name: 'Teacare Service PVT LTD',
-      legalName: 'Teacare Service PVT LTD',
+      name: 'Teacare Services Pvt Ltd',
+      legalName: 'Teacare Services Pvt Ltd',
 
       url: 'https://www.teacareservices.com',
 
@@ -135,12 +134,12 @@ const structuredData = {
       '@type': 'LocalBusiness',
       '@id': 'https://www.teacareservices.com/#business',
 
-      name: 'Teacare Service PVT LTD',
+      name: 'Teacare Services Pvt Ltd',
 
       url: 'https://www.teacareservices.com',
 
       description:
-        'Teacare Service PVT LTD provides corporate event organising, event management, corporate catering, executive high tea, tea services, corporate buffets and gala dinners in Sri Lanka.',
+        'Teacare Services Pvt Ltd provides corporate event organising, event management, corporate catering, executive high tea, tea services, corporate buffets and gala dinners in Sri Lanka.',
 
       areaServed: {
         '@type': 'Country',
@@ -150,7 +149,7 @@ const structuredData = {
       hasOfferCatalog: {
         '@type': 'OfferCatalog',
 
-        name: 'Teacare Service PVT LTD Services',
+        name: 'Teacare Services Pvt Ltd Services',
 
         itemListElement: [
           {
@@ -220,7 +219,7 @@ const structuredData = {
 
       url: 'https://www.teacareservices.com/',
 
-      name: 'Teacare Service PVT LTD',
+      name: 'Teacare Services Pvt Ltd',
 
       publisher: {
         '@id': 'https://www.teacareservices.com/#organization',
