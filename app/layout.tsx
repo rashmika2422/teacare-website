@@ -8,10 +8,9 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://www.teacareservices.com'),
 
   title: {
-    default:
-      'Teacare Services Pvt Ltd | Corporate Events, Catering & Tea Services Sri Lanka',
-    template: '%s | Teacare Services Pvt Ltd',
-  },
+  default: 'Teacare Service Pvt Ltd',
+  template: '%s | Teacare Service Pvt Ltd',
+},
 
   description:
     'Teacare Services Pvt Ltd provides corporate event organising, event management, corporate catering, executive high tea, tea services, corporate buffets and gala dinners across Sri Lanka.',
@@ -33,13 +32,14 @@ export const metadata: Metadata = {
   },
 
   openGraph: {
+    
     type: 'website',
     locale: 'en_LK',
     url: 'https://www.teacareservices.com',
     siteName: 'Teacare Services Pvt Ltd',
 
     title:
-      'Teacare Services Pvt Ltd | Corporate Events, Catering & Tea Services Sri Lanka',
+      'Teacare Services Pvt Ltd | Corporate Services, Catering & Tea Services Sri Lanka',
 
     description:
       'Professional corporate event organising, event management, corporate catering, executive high tea and tea services across Sri Lanka.',
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
 
-    title: 'Teacare Services Pvt Ltd | Corporate Events Sri Lanka',
+    title: 'Teacare Services Pvt Ltd | Corporate Services Sri Lanka',
 
     description:
       'Corporate event organising, catering, high tea, tea services and event management across Sri Lanka.',
@@ -70,14 +70,21 @@ export const metadata: Metadata = {
   category: 'Event Management',
 
   icons: {
-    icon: '/image02.PNG',
-  },
+  icon: [
+    {
+      url: '/image02.PNG',
+      type: 'image/png',
+    },
+  ],
+  shortcut: '/image02.PNG',
+  apple: '/image02.PNG',
+},
 
   keywords: [
     'Teacare Services Pvt Ltd',
     'Teacare Services Pvt Ltd Sri Lanka',
 
-    'corporate events Sri Lanka',
+    'corporate Services Sri Lanka',
     'corporate event organiser Sri Lanka',
     'corporate event organizing Sri Lanka',
     'corporate event organising Sri Lanka',
