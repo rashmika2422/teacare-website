@@ -8,8 +8,8 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://www.teacareservices.com'),
 
   title: {
-  default: 'Teacare Service Pvt Ltd',
-  template: '%s | Teacare Service Pvt Ltd',
+  default: 'Teacare Services Pvt Ltd',
+  template: '%s | Teacare Services Pvt Ltd',
 },
 
   description:
