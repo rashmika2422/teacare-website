@@ -26,9 +26,9 @@ export default function Testimonials() {
   }, []);
 
   const reviews = [
-    { name: 'Jonathan Hayes', role: 'CEO, Apex Financial', img: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=150&auto=format&fit=crop', text: '"The level of precision and elegance they brought to our annual shareholder gala was unmatched. They handled the massive scale of our event with absolute perfection."' },
-    { name: 'Sarah Lin', role: 'Director, Global Tech', img: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=150&auto=format&fit=crop', text: '"From the custom menu design to the seamless logistics, our international summit was executed flawlessly. An indispensable partner for high-level corporate hosting."' },
-    { name: 'Marcus Vance', role: 'COO, Vanguard Media', img: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=150&auto=format&fit=crop', text: '"They transformed a standard corporate presentation into an immersive, premium experience. Our board of directors was thoroughly impressed."' },
+    { name: 'Ruvini Udayangani ', role: 'Manager -Human Resources Fulgar Lanka (Pvt ) ltd', text: '"We would like to express our sincere appreciation for your excellent support in arranging hospitality services for our VIP customer visit.🌸Thank you for your commitment, professionalism, and attention to detail in ensuring a pleasant and memorable experience for our guests. Your valuable contribution and cooperation are highly appreciated.🌷We look forward to continuing our successful partnership with you.🌹"' },
+    //{ name: 'Sarah Lin', role: 'Director, Global Tech', img: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=150&auto=format&fit=crop', text: '"From the custom menu design to the seamless logistics, our international summit was executed flawlessly. An indispensable partner for high-level corporate hosting."' },
+    //{ name: 'Marcus Vance', role: 'COO, Vanguard Media', img: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=150&auto=format&fit=crop', text: '"They transformed a standard corporate presentation into an immersive, premium experience. Our board of directors was thoroughly impressed."' },
   ];
   const recipients = [
     { name: 'Brandix', src: '/assets/images/Brandix_Logo.png', width: 4000, height: 1975 },
