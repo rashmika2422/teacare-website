@@ -123,7 +123,7 @@ export default function Contact() {
                 {
                   icon: 'fa-envelope-open-text',
                   label: 'Email Correspondence',
-                  val: 'teacare.sl@gmail.com',
+                  val: 'events@teacareservices.com',
                 },
 
                 {

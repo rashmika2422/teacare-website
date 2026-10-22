@@ -402,7 +402,7 @@ export default function Hero() {
           style={{
             color: '#ffffff',
 
-            fontSize: '3.6rem',
+            fontSize: '3.0rem',
 
             fontFamily: 'Playfair Display, serif',
 

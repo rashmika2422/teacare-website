@@ -5,6 +5,7 @@ import Services from '../components/Services';
 import Appointment from '../components/Appointment';
 import Footer from '../components/Footer';
 import ScrollProgress from '../components/ScrollProgress';
+import Testimonials from '@/components/Testimonials';
 
 export default function Home() {
   return (
@@ -47,7 +48,9 @@ export default function Home() {
       <Experience />
       <Services />
       <Appointment />
+      <Testimonials />
       <Footer />
+      
     </main>
   );
 }

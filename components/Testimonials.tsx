@@ -1,5 +1,6 @@
 'use client';
 import { useEffect, useRef } from 'react';
+import Image from 'next/image';
 
 export default function Testimonials() {
   const gridRef = useRef<HTMLDivElement>(null);
@@ -29,10 +30,47 @@ export default function Testimonials() {
     { name: 'Sarah Lin', role: 'Director, Global Tech', img: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=150&auto=format&fit=crop', text: '"From the custom menu design to the seamless logistics, our international summit was executed flawlessly. An indispensable partner for high-level corporate hosting."' },
     { name: 'Marcus Vance', role: 'COO, Vanguard Media', img: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=150&auto=format&fit=crop', text: '"They transformed a standard corporate presentation into an immersive, premium experience. Our board of directors was thoroughly impressed."' },
   ];
+  const recipients = [
+    { name: 'Brandix', src: '/assets/images/Brandix_Logo.png', width: 4000, height: 1975 },
+    { name: 'Avery Dennison', src: '/assets/images/avery-dennison-logo.png', width: 2000, height: 652 },
+    { name: 'Fulgar', src: '/assets/images/fulgar-logo.png', width: 2000, height: 1288 },
+  ];
 
   return (
     <section id="testimonials" className="client-testimonials">
       <div className="ambient-glow glow-3" style={{ top: '-100px', left: '-200px' }} />
+      <div className="recipient-section">
+        <h2 className="recipient-title">Service <span className="gold-gradient-text">Recipients</span></h2>
+        <div className="recipient-logos" role="region" aria-label="Service recipients">
+          <div className="recipient-logo-track">
+            <div className="recipient-logo-group" role="list">
+              {recipients.map((recipient) => (
+                <Image
+                  key={recipient.name}
+                  className="recipient-logo"
+                  src={recipient.src}
+                  alt={recipient.name}
+                  width={recipient.width}
+                  height={recipient.height}
+                  role="listitem"
+                />
+              ))}
+            </div>
+            <div className="recipient-logo-group" aria-hidden="true">
+              {recipients.map((recipient) => (
+                <Image
+                  key={recipient.name}
+                  className="recipient-logo"
+                  src={recipient.src}
+                  alt=""
+                  width={recipient.width}
+                  height={recipient.height}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
       <div className="testimonial-header">
         <h2>Trusted By <span className="gold-gradient-text">Industry Leaders</span></h2>
         <div className="gold-divider" />
