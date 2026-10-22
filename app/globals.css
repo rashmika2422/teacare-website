@@ -819,7 +819,8 @@ footer {
     /* Optimize 2-Column Cards */
     .service-card, .testimonial-card, .stat-card, .parallax-card { padding: 15px !important; }
     .service-card h3, .card-content h4 { font-size: 1.1rem !important; margin-bottom: 6px; }
-    .service-card p, .review-text { font-size: 0.85rem !important; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
+    .service-card p { font-size: 0.85rem !important; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
+    .review-text { font-size: 0.85rem !important; line-height: 1.4; }
     .card-content p { display: block; font-size: 0.8rem !important; } 
     .parallax-card, .card-inner { min-height: 300px !important; height: auto; }
     
