@@ -1,3 +1,4 @@
+console.log("Node.js version:", process.version);
 import 'dotenv/config';
 import express from 'express';
 import cors from 'cors';
