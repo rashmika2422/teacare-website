@@ -27,6 +27,9 @@ pnpm-debug.log*
 # Test coverage
 coverage/
 
+# Local feedback submissions contain personal information
+teacare-backend/feedback.json
+
 # macOS
 .DS_Store
 

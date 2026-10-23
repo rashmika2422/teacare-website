@@ -38,12 +38,17 @@ Teacare_website/
 └── teacare-backend/                 # ── BACKEND (Node.js / Express API) ──
     ├── server.js                    # Express server entry point
     ├── routes/
-    │   └── appointmentRoutes.js     # POST /api/appointments, GET, POST /reply
+    │   ├── appointmentRoutes.js     # Appointment API routes
+    │   ├── adminRoutes.js           # Admin login and session
+    │   └── feedbackRoutes.js        # POST /api/feedback
     ├── controllers/
-    │   └── appointmentController.js # Email logic (Resend), sentiment analysis
+    │   ├── appointmentController.js # Email logic (Resend), sentiment analysis
+    │   └── feedbackController.js    # Validates and notifies on feedback
     ├── models/
-    │   └── appointment.js           # In-memory appointment store
+    │   ├── appointment.js           # Appointment storage
+    │   └── feedback.js              # Feedback storage
     ├── middleware/
+    │   ├── adminAuth.js             # Signed admin sessions
     │   └── errorHandler.js          # Global error handler
     ├── .env                         # API keys & notification email
     └── package.json
@@ -74,6 +79,27 @@ npm run dev
 
 > [!IMPORTANT]
 > Both servers must be running simultaneously. The Next.js frontend automatically proxies all `/api/*` requests to the backend on port 8000 via `next.config.ts`.
+
+Set these backend environment variables in `teacare-backend/.env` before using
+the admin dashboard. Use your own strong credentials and generate a unique
+session secret with `openssl rand -hex 32`:
+
+```text
+ADMIN_USERNAME=your-admin-username
+ADMIN_PASSWORD=your-strong-password
+ADMIN_SESSION_SECRET=paste-a-unique-64-character-hex-secret-here
+```
+
+Restart the backend after changing the environment. Configure the same variables
+in the backend's production environment. Admin sessions expire after eight
+hours; feedback management and appointment administration require a valid
+server-issued session.
+
+The feedback form sends submissions to `POST /api/feedback`. Feedback is saved to
+`teacare-backend/feedback.json` with a pending-review status and is not published
+automatically. Feedback is not sent by email. Sign in at `/admin`, open the
+Feedback tab, then select a submission to publish it to the public testimonials
+section or delete it permanently.
 
 ---
 

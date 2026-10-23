@@ -1,9 +1,25 @@
 'use client';
-import { useEffect, useRef } from 'react';
+import { FormEvent, useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
+
+interface PublishedFeedback {
+  id: string;
+  name: string;
+  rating: number;
+  message: string;
+  timestamp: string;
+}
 
 export default function Testimonials() {
   const gridRef = useRef<HTMLDivElement>(null);
+  const [publishedFeedback, setPublishedFeedback] = useState<PublishedFeedback[]>([]);
+  const [feedbackLoadError, setFeedbackLoadError] = useState('');
+  const [rating, setRating] = useState(0);
+  const [submission, setSubmission] = useState<{
+    message: string;
+    type: 'success' | 'error' | 'loading' | '';
+  }>({ message: '', type: '' });
+  const API_URL = process.env.NEXT_PUBLIC_API_URL || '';
 
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
@@ -25,16 +41,74 @@ export default function Testimonials() {
     return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    fetch(`${API_URL}/api/feedback/published`)
+      .then(async (response) => {
+        if (!response.ok) throw new Error('Published feedback is temporarily unavailable.');
+        const data: PublishedFeedback[] = await response.json();
+        setPublishedFeedback(data);
+      })
+      .catch((error: unknown) => {
+        console.error('Failed to load published feedback:', error);
+        setFeedbackLoadError('Published feedback is temporarily unavailable.');
+      });
+  }, [API_URL]);
+
   const reviews = [
-    { name: 'Ruvini Udayangani ', role: 'Manager -Human Resources Fulgar Lanka (Pvt ) ltd',img:"/assets/images/fulgar-logo.png", text: '"We would like to express our sincere appreciation for your excellent support in arranging hospitality services for our VIP customer visit.🌸Thank you for your commitment, professionalism, and attention to detail in ensuring a pleasant and memorable experience for our guests. Your valuable contribution and cooperation are highly appreciated.🌷We look forward to continuing our successful partnership with you.🌹"' },
-    //{ name: 'Sarah Lin', role: 'Director, Global Tech', img: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=150&auto=format&fit=crop', text: '"From the custom menu design to the seamless logistics, our international summit was executed flawlessly. An indispensable partner for high-level corporate hosting."' },
-    //{ name: 'Marcus Vance', role: 'COO, Vanguard Media', img: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=150&auto=format&fit=crop', text: '"They transformed a standard corporate presentation into an immersive, premium experience. Our board of directors was thoroughly impressed."' },
+    {
+      name: 'Ruvini Udayangani',
+      role: 'Manager - Human Resources, Fulgar Lanka (Pvt) Ltd',
+      img: '/assets/images/fulgar-logo.png',
+      text: 'We would like to express our sincere appreciation for your excellent support in arranging hospitality services for our VIP customer visit. Thank you for your commitment, professionalism, and attention to detail in ensuring a pleasant and memorable experience for our guests. Your valuable contribution and cooperation are highly appreciated. We look forward to continuing our successful partnership with you.',
+    },
   ];
   const recipients = [
     { name: 'Brandix', src: '/assets/images/Brandix_Logo.png', width: 4000, height: 1975 },
     { name: 'Avery Dennison', src: '/assets/images/avery-dennison-logo.png', width: 2000, height: 652 },
     { name: 'Fulgar', src: '/assets/images/fulgar-logo.png', width: 2000, height: 1288 },
   ];
+
+  async function handleFeedbackSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+
+    setSubmission({ message: 'Sending your feedback...', type: 'loading' });
+
+    try {
+      const response = await fetch(`${API_URL}/api/feedback`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.get('name'),
+          email: formData.get('email'),
+          rating,
+          message: formData.get('message'),
+        }),
+      });
+      const result: {
+        success?: boolean;
+        message?: string;
+        error?: string;
+      } = await response.json();
+
+      if (!response.ok || !result.success) {
+        throw new Error(result.error || 'We could not submit your feedback. Please try again.');
+      }
+
+      form.reset();
+      setRating(0);
+      setSubmission({
+        message: 'Thank you! Your feedback has been sent to the admin dashboard for review.',
+        type: 'success',
+      });
+    } catch (error) {
+      setSubmission({
+        message: error instanceof Error ? error.message : 'We could not submit your feedback. Please try again.',
+        type: 'error',
+      });
+    }
+  }
 
   return (
     <section id="testimonials" className="client-testimonials">
@@ -84,8 +158,13 @@ export default function Testimonials() {
             </div>
             <p className="review-text">{r.text}</p>
             <div className="executive-profile">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={r.img} alt={r.name} className="executive-img" />
+              <Image
+                src={r.img}
+                alt={`${r.name}'s organization`}
+                className="executive-img"
+                width={100}
+                height={100}
+              />
               <div className="executive-info">
                 <h4>{r.name}</h4>
                 <span>{r.role}</span>
@@ -94,6 +173,87 @@ export default function Testimonials() {
           </div>
         ))}
       </div>
+      <div className="feedback-header">
+        <h3>Share Your <span className="gold-gradient-text">Feedback</span></h3>
+        <p>Your experience matters to us. Tell us how we did.</p>
+      </div>
+      <form className="feedback-form" onSubmit={handleFeedbackSubmit}>
+        <div className="feedback-input-row">
+          <label>
+            Name
+            <input name="name" type="text" autoComplete="name" maxLength={100} required />
+          </label>
+          <label>
+            Email
+            <input name="email" type="email" autoComplete="email" maxLength={254} required />
+          </label>
+        </div>
+        <fieldset className="feedback-rating">
+          <legend>Your rating</legend>
+          <div className="feedback-stars">
+            {[1, 2, 3, 4, 5].map((value) => (
+              <label key={value} className={value <= rating ? 'selected' : ''}>
+                <input
+                  type="radio"
+                  name="rating"
+                  value={value}
+                  checked={rating === value}
+                  onChange={() => setRating(value)}
+                  required={value === 1}
+                />
+                <span aria-hidden="true">★</span>
+                <span className="sr-only">{value} {value === 1 ? 'star' : 'stars'}</span>
+              </label>
+            ))}
+          </div>
+        </fieldset>
+        <label className="feedback-message-label">
+          Your feedback
+          <textarea name="message" rows={5} minLength={10} maxLength={2000} required />
+        </label>
+        <button className="submit-btn" type="submit" disabled={submission.type === 'loading' || rating === 0}>
+          {submission.type === 'loading' ? 'Sending...' : 'Send Feedback'}
+        </button>
+        {submission.message && (
+          <p className={`feedback-status ${submission.type}`} role="status" aria-live="polite">
+            {submission.message}
+          </p>
+        )}
+      </form>
+      {(publishedFeedback.length > 0 || feedbackLoadError) && (
+        <div className="published-feedback-section">
+          <div className="testimonial-header">
+            <h2>Feedback from <span className="gold-gradient-text">Our Clients</span></h2>
+            <div className="gold-divider" />
+            <p>Experiences shared by clients.</p>
+          </div>
+          {feedbackLoadError ? (
+            <p className="feedback-load-error" role="status">{feedbackLoadError}</p>
+          ) : (
+            <div className="testimonial-grid">
+              {publishedFeedback.map((review) => (
+                <div key={review.id} className="testimonial-card">
+                  <div className="stars" aria-label={`${review.rating} out of 5 stars`}>
+                    {[1, 2, 3, 4, 5].map((star) => (
+                      <i key={star} className={star <= review.rating ? 'fa-solid fa-star' : 'fa-regular fa-star'} aria-hidden="true" />
+                    ))}
+                  </div>
+                  <p className="review-text">{review.message}</p>
+                  <div className="executive-profile">
+                    <div className="feedback-avatar" aria-hidden="true">
+                      {review.name.trim().charAt(0).toUpperCase()}
+                    </div>
+                    <div className="executive-info">
+                      <h4>{review.name}</h4>
+                      <span>Teacare client</span>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
     </section>
   );
 }
