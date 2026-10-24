@@ -66,6 +66,9 @@ export default function Testimonials() {
     { name: 'Brandix', src: '/assets/images/Brandix_Logo.png', width: 4000, height: 1975 },
     { name: 'Avery Dennison', src: '/assets/images/avery-dennison-logo.png', width: 2000, height: 652 },
     { name: 'Fulgar', src: '/assets/images/fulgar-logo.png', width: 2000, height: 1288 },
+    { name: 'Ascent', src: '/assets/images/Ascent-logo.jpeg', width: 2058, height: 764 },
+    { name: 'Control Union', src: '/assets/images/control-union-logo.png', width: 2000, height: 314 },
+    { name: 'Savinda Graphics', src: '/assets/images/savinda-graphics-logo.png', width: 406, height: 166 },
   ];
 
   async function handleFeedbackSubmit(event: FormEvent<HTMLFormElement>) {
