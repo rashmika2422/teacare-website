@@ -3,6 +3,7 @@ import './globals.css';
 
 import AIChatBot from '../components/AIChatBot';
 import ScrollToTop from '../components/ScrollToTop';
+import SiteScrollEffects from '../components/SiteScrollEffects';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.teacareservices.com'),
@@ -68,17 +69,6 @@ export const metadata: Metadata = {
   },
 
   category: 'Event Management',
-
-  icons: {
-  icon: [
-    {
-      url: 'icon.png',
-      type: 'image/png',
-    },
-  ],
-  shortcut: 'icon.png',
-  apple: 'icon.png',
-},
 
   keywords: [
     'Teacare Services Pvt Ltd',
@@ -264,6 +254,7 @@ export default function RootLayout({
       <body>
         {children}
 
+        <SiteScrollEffects />
         <AIChatBot />
         <ScrollToTop />
       </body>

@@ -19,11 +19,21 @@ export default function Hero() {
   const statsRef = useRef<HTMLDivElement>(null);
 
   // Typewriter State
-  const [displayText, setDisplayText] = useState('');
+  const [displayText, setDisplayText] = useState(TYPING_PHRASES[0]);
   const [phraseIndex, setPhraseIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      if (displayText !== TYPING_PHRASES[0]) {
+        const timeout = setTimeout(() => {
+          setDisplayText(TYPING_PHRASES[0]);
+        }, 0);
+        return () => clearTimeout(timeout);
+      }
+      return;
+    }
+
     let typingSpeed = isDeleting ? 40 : 80;
     const currentPhrase = TYPING_PHRASES[phraseIndex];
 
@@ -55,6 +65,10 @@ export default function Hero() {
   }, [displayText, isDeleting, phraseIndex]);
 
   useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      return;
+    }
+
     // Staggered entrance animations
     const items = [badgeRef, titleRef, descRef, btnsRef, statsRef];
 

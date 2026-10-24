@@ -34,8 +34,8 @@ export function revealStyle(delay = 0): React.CSSProperties {
 }
 
 /** Animated section heading component */
-export function SectionHeading({ subtitle, title, goldText, description, light = false }: {
-  subtitle?: string; title: string; goldText: string; description?: string; light?: boolean;
+export function SectionHeading({ subtitle, title, goldText, description }: {
+  subtitle?: string; title: string; goldText: string; description?: string;
 }) {
   const ref = useRef<HTMLDivElement>(null);
   useScrollReveal(ref);
@@ -48,7 +48,7 @@ export function SectionHeading({ subtitle, title, goldText, description, light =
           color: '#f39c12', fontWeight: 700, textTransform: 'uppercase' as const,
           letterSpacing: '3px', fontSize: '0.82rem', display: 'inline-flex',
           alignItems: 'center', gap: '10px', marginBottom: '14px',
-          background: light ? 'rgba(243,156,18,0.08)' : 'rgba(243,156,18,0.06)',
+          background: 'rgba(243,156,18,0.06)',
           padding: '6px 18px', borderRadius: '30px', border: '1px solid rgba(243,156,18,0.15)'
         }}>
           <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#f39c12', boxShadow: '0 0 10px #f39c12' }} />
@@ -58,7 +58,7 @@ export function SectionHeading({ subtitle, title, goldText, description, light =
       <h2 data-reveal style={{
         ...revealStyle(0.1),
         fontSize: '2.6rem', fontFamily: 'Playfair Display, serif',
-        color: light ? '#1a202c' : '#fff', margin: '12px 0', lineHeight: 1.2
+        color: '#fff', margin: '12px 0', lineHeight: 1.2
       }}>
         {title} <span className="gold-gradient-text">{goldText}</span>
       </h2>
@@ -71,7 +71,7 @@ export function SectionHeading({ subtitle, title, goldText, description, light =
       {description && (
         <p data-reveal style={{
           ...revealStyle(0.25),
-          color: light ? '#4a5568' : '#a0aec0', fontSize: '1.05rem',
+          color: '#a0aec0', fontSize: '1.05rem',
           maxWidth: '650px', margin: '0 auto'
         }}>
           {description}

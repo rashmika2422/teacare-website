@@ -1,250 +1,148 @@
-'use client';
-import { useState } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
+import AboutJourney from '../../components/AboutJourney';
+import AboutScrollEffects from '../../components/AboutScrollEffects';
+import ScrollProgress from '../../components/ScrollProgress';
 
-const milestones = [
-  { year: '2018', title: 'Founded in Colombo', desc: 'Started with bespoke Ceylon high tea catering for boutique corporate forums.' },
-  { year: '2021', title: 'Enterprise Expansion', desc: 'Scaled operations to manage 500+ delegate B2B summits and annual shareholder galas.' },
-  { year: '2024', title: 'National Recognition', desc: 'Certified as Sri Lanka premier corporate hospitality & event logistics provider.' }
+const values = [
+  {
+    icon: 'fa-heart',
+    title: 'Thoughtful care',
+    description: 'Warm, attentive hospitality that helps every guest feel welcome.',
+  },
+  {
+    icon: 'fa-mug-hot',
+    title: 'Pride in the details',
+    description: 'Considered presentation, quality catering, and a well-prepared tea service.',
+  },
+  {
+    icon: 'fa-clock',
+    title: 'Reliable delivery',
+    description: 'Calm, coordinated service shaped around each event and its schedule.',
+  },
+  {
+    icon: 'fa-handshake',
+    title: 'A partner mindset',
+    description: 'Working closely with each client to create an experience that feels right.',
+  },
 ];
 
 export default function AboutPage() {
-  const [activeStory, setActiveStory] = useState(0);
-
   return (
-    <main style={{ minHeight: '100vh', background: 'var(--dark-gray)', color: '#ffffff', fontFamily: 'Poppins, sans-serif' }}>
+    <main className="about-page">
+      <ScrollProgress />
+      <AboutScrollEffects />
       <Header />
-      
-      {/* Hero Header */}
-      <section className="about-hero" style={{
-        position: 'relative',
-        padding: '160px 8% 100px',
-        backgroundImage: 'linear-gradient(180deg, rgba(15,20,28,0.5) 0%, rgba(15,20,28,0.7) 60%, var(--dark-gray) 100%), url("/assets/images/aboutus_background.jpeg")',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundAttachment: 'fixed',
-        borderBottom: '1px solid rgba(243,156,18,0.1)'
-      }}>
-        {/* Back to Home Button */}
-        <div className="back-btn-container">
-          <a
-            href="/"
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '8px',
-              background: 'rgba(255, 255, 255, 0.05)',
-              color: '#a0aec0',
-              padding: '8px 16px',
-              borderRadius: '20px',
-              border: '1px solid rgba(255, 255, 255, 0.1)',
-              fontSize: '0.85rem',
-              fontWeight: 500,
-              textDecoration: 'none',
-              backdropFilter: 'blur(8px)',
-              transition: 'all 0.3s ease'
-            }}
-            onMouseOver={(e) => {
-              e.currentTarget.style.color = '#f39c12';
-              e.currentTarget.style.borderColor = '#f39c12';
-              e.currentTarget.style.background = 'rgba(243,156,18,0.1)';
-            }}
-            onMouseOut={(e) => {
-              e.currentTarget.style.color = '#a0aec0';
-              e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)';
-              e.currentTarget.style.background = 'rgba(255,255,255,0.05)';
-            }}
-          >
-            <i className="fa-solid fa-arrow-left"></i> Back to Home
-          </a>
-        </div>
 
-        <div style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center' }}>
-          <span style={{ 
-            color: '#f39c12', fontWeight: 700, letterSpacing: '3px', textTransform: 'uppercase', 
-            fontSize: '0.85rem', display: 'inline-block', marginBottom: '15px' 
-          }}>
-            Who We Are
-          </span>
-          <h1 style={{ fontFamily: 'Playfair Display, serif', fontSize: '4rem', color: '#ffffff', margin: '0 0 25px', lineHeight: 1.1 }}>
-            The Story of <br/><span className="gold-gradient-text">Teacare Services Pvt Ltd</span>
+      <section className="about-page-hero" aria-labelledby="about-page-title">
+        <div className="about-page-hero__content" data-scroll-reveal>
+          <span className="about-page-eyebrow">A warm welcome, thoughtfully delivered</span>
+          <h1 id="about-page-title">
+            Hospitality that brings
+            <span className="gold-gradient-text"> people together</span>
           </h1>
-          <p style={{ color: '#cbd5e1', fontSize: '1.2rem', lineHeight: 1.6, fontWeight: 300 }}>
-            Dedicated to engineering flawless, high-stakes corporate hospitality experiences with Sri Lankan warmth and international precision.
+          <p>
+            Teacare Services Pvt Ltd brings corporate events, catering, and tea
+            hospitality together with care, craft, and a distinctly Sri Lankan
+            warmth.
           </p>
+          <Link className="cta-btn primary about-page-button" href="/#appointment">
+            Plan Your Event <i className="fa-solid fa-arrow-right" aria-hidden="true" />
+          </Link>
         </div>
+        <a className="about-page-scroll" href="#our-story" aria-label="Scroll to our story">
+          <i className="fa-solid fa-arrow-down" aria-hidden="true" />
+        </a>
       </section>
 
-      {/* Two Column Canvas Story */}
-      <section style={{ padding: '100px 8%', maxWidth: '1300px', margin: '0 auto' }}>
-        <div className="about-canvas-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '60px', alignItems: 'center' }}>
-          {/* Left Canvas with local user photos/videos */}
-          <div className="about-canvas-wrapper" style={{ position: 'relative', minHeight: '500px' }}>
-            <div style={{
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              width: '80%',
-              height: '400px',
-              borderRadius: '16px',
-              overflow: 'hidden',
-              boxShadow: '0 20px 40px rgba(0,0,0,0.4)',
-              border: '1px solid rgba(255,255,255,0.1)',
-              zIndex: 1
-            }}>
-              <video 
-                autoPlay loop muted playsInline
-                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-              >
-                <source src="/assets/images/aboutus.MP4" type="video/mp4" />
-              </video>
-            </div>
-            
-            <div style={{
-              position: 'absolute',
-              bottom: 0,
-              right: 0,
-              width: '65%',
-              height: '300px',
-              borderRadius: '16px',
-              backgroundImage: "url('/assets/images/030ceddc-631b-4234-a761-cf915d107809.JPG')",
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-              boxShadow: '0 25px 50px rgba(0,0,0,0.6)',
-              border: '6px solid #0f141c',
-              zIndex: 2
-            }} />
+      <section className="about-page-story" id="our-story" aria-label="TeaCare team and company journey">
+        <AboutJourney />
+      </section>
+
+      <section className="about-page-purpose" aria-labelledby="about-purpose-title">
+        <div className="about-page-container">
+          <div className="about-page-section-heading" data-scroll-reveal>
+            <span className="about-page-eyebrow">What guides us</span>
+            <h2 id="about-purpose-title">Good hospitality, <span className="gold-gradient-text">with purpose</span></h2>
+            <p>The care we bring to every event starts with what matters to us.</p>
           </div>
 
-          {/* Right Text */}
-          <div>
-            <h2 style={{ fontFamily: 'Playfair Display, serif', fontSize: '2.8rem', color: '#ffffff', marginBottom: '25px', lineHeight: 1.2 }}>
-              Precision Hospitality <span className="gold-gradient-text">Engineered for Royalty &amp; C-Suites</span>
-            </h2>
-            <div style={{ width: '60px', height: '3px', background: 'linear-gradient(90deg, #f39c12, #e67e22)', marginBottom: '30px', borderRadius: '2px' }} />
-            
-            <p style={{ color: '#a0aec0', fontSize: '1.05rem', lineHeight: 1.8, marginBottom: '25px' }}>
-              At <strong style={{ color: '#fff' }}>Teacare Services Pvt Ltd</strong>, we treat every corporate event as a vital milestone. From high-stakes board room meetings to multi-day summits, our team combines Sommelier-grade tea selection with international protocol standards.
-            </p>
-            <p style={{ color: '#a0aec0', fontSize: '1.05rem', lineHeight: 1.8, marginBottom: '40px' }}>
-              Our commitment goes beyond catering; it's about curating an atmosphere that reflects your brand's prestige and values, ensuring every delegate leaves with a lasting impression of excellence.
-            </p>
-            
-            <div className="about-stats-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
-              <div style={{ background: '#1a202c', padding: '25px 20px', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.05)', borderLeft: '4px solid #f39c12', transition: 'transform 0.3s', cursor: 'pointer' }} onMouseOver={e=>e.currentTarget.style.transform='translateY(-5px)'} onMouseOut={e=>e.currentTarget.style.transform='translateY(0)'}>
-                <h4 style={{ color: '#f39c12', fontSize: '2rem', fontFamily: 'Playfair Display, serif', margin: '0 0 5px' }}>99.8%</h4>
-                <span style={{ fontSize: '0.85rem', color: '#a0aec0', textTransform: 'uppercase', letterSpacing: '1px' }}>Punctuality &amp; Execution</span>
-              </div>
-              <div style={{ background: '#1a202c', padding: '25px 20px', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.05)', borderLeft: '4px solid #6c5ce7', transition: 'transform 0.3s', cursor: 'pointer' }} onMouseOver={e=>e.currentTarget.style.transform='translateY(-5px)'} onMouseOut={e=>e.currentTarget.style.transform='translateY(0)'}>
-                <h4 style={{ color: '#6c5ce7', fontSize: '2rem', fontFamily: 'Playfair Display, serif', margin: '0 0 5px' }}>150+</h4>
-                <span style={{ fontSize: '0.85rem', color: '#a0aec0', textTransform: 'uppercase', letterSpacing: '1px' }}>Enterprise Galas Delivered</span>
-              </div>
-            </div>
+          <div className="about-page-purpose__grid">
+            <article className="about-page-purpose-card" data-scroll-reveal>
+              <span className="about-page-purpose-card__icon" aria-hidden="true">
+                <i className="fa-solid fa-seedling" />
+              </span>
+              <span className="about-page-card-label">Our mission</span>
+              <h3>Make every gathering feel considered</h3>
+              <p>
+                To create welcoming corporate experiences through attentive
+                service, thoughtful catering, and well-coordinated event support.
+              </p>
+            </article>
+            <article className="about-page-purpose-card" data-scroll-reveal style={{ transitionDelay: '120ms' }}>
+              <span className="about-page-purpose-card__icon" aria-hidden="true">
+                <i className="fa-solid fa-compass" />
+              </span>
+              <span className="about-page-card-label">Our vision</span>
+              <h3>Bring people together, beautifully</h3>
+              <p>
+                To help make warm, dependable hospitality part of every
+                organization&apos;s most meaningful moments.
+              </p>
+            </article>
           </div>
         </div>
       </section>
 
-      {/* Interactive Milestones Timeline */}
-      <section style={{ padding: '100px 8%', background: '#090d14', borderTop: '1px solid rgba(255,255,255,0.02)', paddingBottom: '140px' }}>
-        <div style={{ maxWidth: '1000px', margin: '0 auto', textAlign: 'center' }}>
-          <span style={{ color: '#f39c12', fontWeight: 700, letterSpacing: '2px', textTransform: 'uppercase', fontSize: '0.85rem', display: 'block', marginBottom: '15px' }}>
-            Our Journey
-          </span>
-          <h2 style={{ fontFamily: 'Playfair Display, serif', fontSize: '2.8rem', color: '#ffffff', marginBottom: '50px' }}>
-            Corporate <span className="gold-gradient-text">Growth Milestones</span>
-          </h2>
-          <div className="about-milestones-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '30px' }}>
-            {milestones.map((m, i) => (
-              <div
-                key={i}
-                onClick={() => setActiveStory(i)}
-                style={{
-                  background: activeStory === i ? '#1a202c' : 'rgba(255,255,255,0.02)',
-                  padding: '40px 30px',
-                  borderRadius: '16px',
-                  border: activeStory === i ? '1px solid #f39c12' : '1px solid rgba(255,255,255,0.05)',
-                  cursor: 'pointer',
-                  transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
-                  transform: activeStory === i ? 'translateY(-10px)' : 'translateY(0)',
-                  boxShadow: activeStory === i ? '0 15px 30px rgba(0,0,0,0.5)' : 'none'
-                }}
+      <section className="about-page-values" aria-labelledby="about-values-title">
+        <div className="about-page-container">
+          <div className="about-page-section-heading" data-scroll-reveal>
+            <span className="about-page-eyebrow">The way we work</span>
+            <h2 id="about-values-title">Care in every <span className="gold-gradient-text">detail</span></h2>
+          </div>
+          <div className="about-page-values__grid">
+            {values.map((value, index) => (
+              <article
+                className="about-page-value-card"
+                data-scroll-reveal
+                key={value.title}
+                style={{ transitionDelay: `${index * 90}ms` }}
               >
-                <span style={{ fontSize: '2.5rem', fontWeight: 800, color: activeStory===i ? '#f39c12' : '#4a5568', fontFamily: 'Playfair Display, serif', display: 'block', marginBottom: '15px', transition: 'color 0.3s' }}>{m.year}</span>
-                <h4 style={{ color: '#fff', fontSize: '1.2rem', margin: '0 0 10px' }}>{m.title}</h4>
-                <p style={{ color: '#a0aec0', fontSize: '0.9rem', lineHeight: 1.6, margin: 0 }}>{m.desc}</p>
-              </div>
+                <span className="about-page-value-card__icon" aria-hidden="true">
+                  <i className={`fa-solid ${value.icon}`} />
+                </span>
+                <h3>{value.title}</h3>
+                <p>{value.description}</p>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Our Crew Section */}
-      <section style={{ padding: '80px 8% 120px', maxWidth: '1200px', margin: '0 auto' }}>
-        <div style={{ textAlign: 'center', marginBottom: '50px' }}>
-          <span style={{ color: '#f39c12', fontWeight: 700, letterSpacing: '2px', textTransform: 'uppercase', fontSize: '0.85rem', display: 'block', marginBottom: '15px' }}>
-            The Backbone of Teacare Services Pvt Ltd
-          </span>
-          <h2 style={{ fontFamily: 'Playfair Display, serif', fontSize: '2.8rem', color: '#ffffff' }}>
-            Meet <span className="gold-gradient-text">Our Crew</span>
-          </h2>
-          <div style={{ width: '60px', height: '3px', background: 'linear-gradient(90deg, #f39c12, #e67e22)', margin: '20px auto 0', borderRadius: '2px' }} />
-          <p style={{ color: '#a0aec0', fontSize: '1.05rem', maxWidth: '700px', margin: '25px auto 0', lineHeight: 1.6 }}>
-            Our dedicated team of event executives, sommeliers, and production specialists who work tirelessly behind the scenes to engineer flawless corporate experiences.
-          </p>
-        </div>
-
-        <div className="crew-image-box" style={{
-          position: 'relative',
-          width: '100%',
-          height: '550px',
-          borderRadius: '24px',
-          overflow: 'hidden',
-          boxShadow: '0 25px 60px rgba(0,0,0,0.5)',
-          border: '1px solid rgba(255,255,255,0.1)',
-          cursor: 'pointer'
-        }}
-        onMouseOver={(e) => {
-          const img = e.currentTarget.querySelector('.crew-bg') as HTMLElement;
-          const overlay = e.currentTarget.querySelector('.crew-overlay') as HTMLElement;
-          if (img) img.style.transform = 'scale(1.05)';
-          if (overlay) overlay.style.background = 'linear-gradient(180deg, rgba(15,20,28,0.1) 0%, rgba(243,156,18,0.4) 100%)';
-        }}
-        onMouseOut={(e) => {
-          const img = e.currentTarget.querySelector('.crew-bg') as HTMLElement;
-          const overlay = e.currentTarget.querySelector('.crew-overlay') as HTMLElement;
-          if (img) img.style.transform = 'scale(1)';
-          if (overlay) overlay.style.background = 'linear-gradient(180deg, rgba(15,20,28,0) 0%, rgba(15,20,28,0.9) 100%)';
-        }}>
-          {/* Replace this filename with the exact crew image filename if it differs */}
-          <div className="crew-bg" style={{
-            position: 'absolute', top: 0, left: 0, width: '100%', height: '100%',
-            backgroundImage: "url('/assets/images/afdfa8a8-374f-4b83-988f-a1491541f808.JPG')",
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            transition: 'transform 0.8s cubic-bezier(0.16, 1, 0.3, 1)'
-          }} />
-          <div className="crew-overlay" style={{
-            position: 'absolute', top: 0, left: 0, width: '100%', height: '100%',
-            background: 'linear-gradient(180deg, rgba(15,20,28,0) 0%, rgba(15,20,28,0.9) 100%)',
-            transition: 'background 0.5s ease',
-            pointerEvents: 'none'
-          }} />
-          
-          <div style={{
-            position: 'absolute', bottom: '40px', left: '40px',
-            pointerEvents: 'none'
-          }}>
-            <h3 style={{ color: '#fff', fontSize: '2.2rem', fontFamily: 'Playfair Display, serif', margin: 0, textShadow: '0 4px 15px rgba(0,0,0,0.8)' }}>
-              Teacare Services Pvt Ltd Operational Team
-            </h3>
-            <p style={{ color: '#f39c12', fontWeight: 600, margin: '5px 0 0', textTransform: 'uppercase', letterSpacing: '1px' }}>
-              The Engine of Excellence
-            </p>
+      <section className="about-page-team" aria-label="TeaCare team">
+        <div className="about-page-container about-page-story__grid">
+          <div className="about-page-story__images" data-scroll-reveal>
+            <figure className="about-page-story__main-image" data-scroll-reveal>
+              <Image
+                src="/assets/images/team.JPG"
+                alt="TeaCare team gathered together"
+                width={1280}
+                height={958}
+                sizes="(max-width: 768px) 100vw, 48vw"
+              />
+              <span className="about-page-story__image-gradient" aria-hidden="true" />
+              <figcaption className="about-page-photo-note">
+                <p>Plan your next event with our team.</p>
+                <Link className="cta-btn primary about-page-button about-page-team-cta" href="/#appointment">
+                  Book an Appointment <i className="fa-solid fa-arrow-right" aria-hidden="true" />
+                </Link>
+              </figcaption>
+            </figure>
           </div>
         </div>
       </section>
-
       <Footer />
     </main>
   );

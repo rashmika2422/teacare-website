@@ -1,8 +1,12 @@
 'use client';
 import { useState, useEffect, useRef } from 'react';
+import Image from 'next/image';
 import { SectionHeading, useScrollReveal, revealStyle } from './AnimUtils';
 
 interface ServiceItem { id: string; icon: string; title: string; desc: string; highlights: string[]; }
+type ShowcaseMedia =
+  | { type: 'image'; src: string; title: string }
+  | { type: 'video'; src: string; poster: string; title: string; contentType: 'video/mp4' | 'video/quicktime' };
 
 const serviceDetails: ServiceItem[] = [
   { id: 'tea', icon: 'fa-mug-hot', title: 'Executive High Tea', desc: 'Curated premier tea blends, delicate porcelain styling, and fine pastries for high-tier networking intervals.', highlights: ['Single-Origin Ceylon Teas', 'Bespoke Porcelain Layouts', 'Artisanal Pastry Platters', 'Dedicated Tea Sommelier'] },
@@ -11,14 +15,14 @@ const serviceDetails: ServiceItem[] = [
   { id: 'summit', icon: 'fa-building-columns', title: 'Cooperative Summits', desc: 'Flawless management of inter-company forums and national conferences around your objectives.', highlights: ['Keynote Stage Logistics', 'Breakout Refreshment Stations', 'Multilingual Hostesses', 'End-to-End Floor Protocol'] }
 ];
 
-const showcaseMedia = [
-  { type: 'video', src: '/assets/images/40d96993-43d0-469b-bc51-255eca92b458.MP4', title: 'Gala Night Setup' },
-  { type: 'image', src: '/assets/images/4c05f57e-6687-4069-9da0-75bd387b31d0.JPG', title: 'Executive Table Arrangements' },
-  { type: 'image', src: '/assets/images/3150f07e-2b62-4fb1-a3ce-08c352256f86.JPG', title: 'Premium Catering Display' },
-  { type: 'image', src: '/assets/images/33471c52-5a9a-4ee4-984a-4caeec62e50f.JPG', title: 'VIP Networking Lounge' },
-  { type: 'image', src: '/assets/images/4dd8d992-a640-44ba-9f23-fb03abeea95e.JPG', title: 'Bespoke Dessert Station' },
-  { type: 'image', src: '/assets/images/78d6eb67-1dde-4625-b99f-8c1fe0930372.JPG', title: 'Summit Conference Hall' },
-  { type: 'image', src: '/assets/images/81d1430d-132a-4f3b-8793-7b4d11166e06.JPG', title: 'Artisanal Canapés' },
+const showcaseMedia: ShowcaseMedia[] = [
+  { type: 'image', src: '/assets/images/hightea_gala.jpg', title: 'High Tea Gala' },
+  { type: 'image', src: '/assets/images/premium_catering_display.jpg', title: 'Premium Catering Display' },
+  { type: 'image', src: '/assets/images/snacks_stations.jpg', title: 'Snacks Stations' },
+  { type: 'image', src: '/assets/images/presentation_produtions.JPG', title: 'Presentation Productions' },
+  { type: 'video', src: '/assets/images/executive_table_arrangement.MOV', poster: '/assets/images/executive_table_arrangement_poster.jpg', title: 'Executive Table Arrangement', contentType: 'video/quicktime' },
+  { type: 'video', src: '/assets/images/aboutus.mp4', poster: '/assets/images/aboutus_video_poster.jpg', title: 'About Us', contentType: 'video/mp4' },
+  { type: 'image', src: '/assets/images/catering_showcase_custom.jpeg', title: 'Catering Showcase' },
 ];
 
 export default function Services() {
@@ -98,16 +102,21 @@ export default function Services() {
             }}>
               {media.type === 'video' ? (
                 <video 
-                  className="media-bg" autoPlay loop muted playsInline
+                  className="media-bg" controls preload="metadata" playsInline poster={media.poster} aria-label={media.title}
                   style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.6s cubic-bezier(0.16,1,0.3,1)' }}
                 >
-                  <source src={media.src} type="video/mp4" />
+                  <source src={media.src} type={media.contentType} />
+                  Your browser does not support this video format.
                 </video>
               ) : (
-                <div className="media-bg" style={{ 
-                  width: '100%', height: '100%', backgroundImage: `url('${media.src}')`, 
-                  backgroundSize: 'cover', backgroundPosition: 'center', transition: 'transform 0.6s cubic-bezier(0.16,1,0.3,1)' 
-                }} />
+                <Image
+                  src={media.src}
+                  alt={media.title}
+                  fill
+                  sizes="(max-width: 768px) 85vw, (max-width: 1200px) 45vw, 30vw"
+                  className="media-bg"
+                  style={{ objectFit: 'cover', transition: 'transform 0.6s cubic-bezier(0.16,1,0.3,1)' }}
+                />
               )}
               <div className="media-overlay" style={{ 
                 position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', 

@@ -1,6 +1,6 @@
 'use client';
 import { useRef } from 'react';
-import { useScrollReveal, revealStyle, SectionHeading } from './AnimUtils';
+import { useScrollReveal, revealStyle } from './AnimUtils';
 
 export default function Experience() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -55,7 +55,6 @@ export default function Experience() {
               {[
                 { num: '99.8%', label: 'Punctuality Score', w: '99.8%' },
                 { num: '150+', label: 'Enterprise Galas', w: '85%' },
-                { num: '5-Star', label: 'Culinary Standard', w: '100%' },
               ].map((s, i) => (
                 <div key={s.label} className="stat-card" data-reveal style={revealStyle(0.3 + i * 0.12)}>
                   <div className="stat-num gold-gradient-text">{s.num}</div>
