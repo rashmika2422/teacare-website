@@ -99,7 +99,7 @@ export default function Testimonials() {
       form.reset();
       setRating(0);
       setSubmission({
-        message: 'Thank you! Your feedback has been sent to the admin dashboard for review.',
+        message: 'Thank you! Your feedback has been submitted successfully.',
         type: 'success',
       });
     } catch (error) {
