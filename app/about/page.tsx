@@ -4,6 +4,7 @@ import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import AboutJourney from '../../components/AboutJourney';
 import AboutScrollEffects from '../../components/AboutScrollEffects';
+import AboutPurposeCarousel from '../../components/AboutPurposeCarousel';
 import ScrollProgress from '../../components/ScrollProgress';
 
 const values = [
@@ -69,30 +70,7 @@ export default function AboutPage() {
             <p>The care we bring to every event starts with what matters to us.</p>
           </div>
 
-          <div className="about-page-purpose__grid">
-            <article className="about-page-purpose-card" data-scroll-reveal>
-              <span className="about-page-purpose-card__icon" aria-hidden="true">
-                <i className="fa-solid fa-seedling" />
-              </span>
-              <span className="about-page-card-label">Our mission</span>
-              <h3>Make every gathering feel considered</h3>
-              <p>
-                To create welcoming corporate experiences through attentive
-                service, thoughtful catering, and well-coordinated event support.
-              </p>
-            </article>
-            <article className="about-page-purpose-card" data-scroll-reveal style={{ transitionDelay: '120ms' }}>
-              <span className="about-page-purpose-card__icon" aria-hidden="true">
-                <i className="fa-solid fa-compass" />
-              </span>
-              <span className="about-page-card-label">Our vision</span>
-              <h3>Bring people together, beautifully</h3>
-              <p>
-                To help make warm, dependable hospitality part of every
-                organization&apos;s most meaningful moments.
-              </p>
-            </article>
-          </div>
+          <AboutPurposeCarousel />
         </div>
       </section>
 
