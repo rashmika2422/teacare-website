@@ -13,6 +13,14 @@ const aboutImages = [
     src: '/assets/images/premium_catering_display.jpg',
     alt: 'Premium catering display prepared for a corporate event',
   },
+  {
+    src: '/assets/images/c39b0012-f202-44c8-91e8-9751b14876a0.JPG',
+    alt: 'TeaCare hospitality service at a corporate event',
+  },
+  {
+    src: '/assets/images/presentation_produtions.JPG',
+    alt: 'TeaCare presentation and production setup for a corporate event',
+  },
 ];
 
 const storyMoments = [
@@ -149,32 +157,6 @@ export default function AboutPage() {
               From intimate executive gatherings to larger corporate occasions, our work is shaped by professionalism,
               warmth, and the belief that the small details often make the biggest difference.
             </p>
-          </div>
-        </div>
-      </section>
-
-      <section className="about-story-journey">
-        <div className="about-page-container">
-          <div className="about-page-section-heading">
-            <span className="about-page-eyebrow">Our Story</span>
-            <h2>
-              A hospitality philosophy built on <span className="gold-gradient-text">care, quality, and trust.</span>
-            </h2>
-          </div>
-
-          <div className="story-journey-list">
-            {storyMoments.map((moment, index) => (
-              <article key={moment.title} className={`story-moment story-moment--${index % 2 === 0 ? 'left' : 'right'}`}>
-                <div className="story-moment__image">
-                  <Image src={moment.image} alt={moment.alt} width={900} height={700} sizes="(max-width: 768px) 100vw, 46vw" />
-                </div>
-                <div className="story-moment__content">
-                  <span className="story-moment__eyebrow">{moment.label}</span>
-                  <h3>{moment.title}</h3>
-                  <p>{moment.description}</p>
-                </div>
-              </article>
-            ))}
           </div>
         </div>
       </section>
