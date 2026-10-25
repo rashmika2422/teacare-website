@@ -21,7 +21,7 @@ const showcaseMedia: ShowcaseMedia[] = [
   { type: 'image', src: '/assets/images/snacks_stations.jpg', title: 'Snacks Stations' },
   { type: 'image', src: '/assets/images/presentation_produtions.JPG', title: 'Presentation Productions' },
   { type: 'video', src: '/assets/images/executive_table_arrangement.MOV', poster: '/assets/images/executive_table_arrangement_poster.jpg', title: 'Executive Table Arrangement', contentType: 'video/quicktime' },
-  { type: 'video', src: '/assets/images/aboutus.mp4', poster: '/assets/images/aboutus_video_poster.jpg', title: 'About Us', contentType: 'video/mp4' },
+  { type: 'video', src: '/assets/images/aboutus1.mp4', poster: '/assets/images/aboutus_video_poster.jpg', title: 'About Us', contentType: 'video/mp4' },
   { type: 'image', src: '/assets/images/catering_showcase_custom.jpeg', title: 'Catering Showcase' },
 ];
 
@@ -102,7 +102,7 @@ export default function Services() {
             }}>
               {media.type === 'video' ? (
                 <video 
-                  className="media-bg" controls preload="metadata" playsInline poster={media.poster} aria-label={media.title}
+                  className="media-bg" autoPlay muted loop preload="metadata" playsInline poster={media.poster} aria-label={media.title}
                   style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.6s cubic-bezier(0.16,1,0.3,1)' }}
                 >
                   <source src={media.src} type={media.contentType} />
