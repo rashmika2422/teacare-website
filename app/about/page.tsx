@@ -3,25 +3,8 @@ import Link from 'next/link';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import ScrollProgress from '../../components/ScrollProgress';
-
-const aboutImages = [
-  {
-    src: '/assets/images/0caefa54-752b-4768-aabd-d4358f3d84b7.JPG',
-    alt: 'TeaCare team preparing a corporate hospitality service',
-  },
-  {
-    src: '/assets/images/5c813b4d-2ac2-4a3d-b89b-7dab2040ac0b.JPG',
-    alt: 'Corporate buffet and tableware arranged for an event',
-  },
-  {
-    src: '/assets/images/2e6f531b-c8f3-4ecd-b9d3-bb13013e4196.JPG',
-    alt: 'Refreshment station prepared for a corporate event',
-  },
-  {
-    src: '/assets/images/39fc29c8-039e-479d-a4b3-1d30ddfe6e11.JPG',
-    alt: 'TeaCare catering selection prepared for guests',
-  },
-];
+import AboutImageCarousel from '../../components/AboutImageCarousel';
+import { aboutCarouselImages } from '../../components/galleryImages';
 
 const storyMoments = [
   {
@@ -104,13 +87,7 @@ export default function AboutPage() {
 
       <section className="about-image-showcase" aria-labelledby="about-page-title">
         <div className="about-image-showcase__inner">
-          <div className="about-image-showcase__images">
-            {aboutImages.map((image) => (
-              <div key={image.src} className="about-image-showcase__image">
-                <Image src={image.src} alt={image.alt} fill sizes="(max-width: 980px) 50vw, 44vw" />
-              </div>
-            ))}
-          </div>
+          <AboutImageCarousel images={aboutCarouselImages} />
 
           <div className="about-image-showcase__copy">
             <h1 id="about-page-title">

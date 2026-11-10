@@ -2,6 +2,7 @@
 import { useState, useEffect, useRef, useSyncExternalStore } from 'react';
 import Image from 'next/image';
 import { SectionHeading, useScrollReveal, revealStyle } from './AnimUtils';
+import { galleryCarouselImages } from './galleryImages';
 
 const reducedMotionQuery = '(prefers-reduced-motion: reduce)';
 
@@ -20,49 +21,7 @@ type ShowcaseMedia =
   | { type: 'image'; src: string; title: string }
   | { type: 'carousel'; images: readonly string[]; title: string }
   | { type: 'video'; src: string; poster: string; title: string; contentType: 'video/mp4' | 'video/quicktime' };
-
-const galleryCarouselImages = [
-  '/assets/images/0581222c-d7bd-4a1e-a362-06a06e411796.JPG',
-  '/assets/images/07185182-b138-4973-ad92-20223397af8b.JPG',
-  '/assets/images/0b975cc0-8d14-49df-b2f6-fb62331c84d7.JPG',
-  '/assets/images/0caefa54-752b-4768-aabd-d4358f3d84b7.JPG',
-  '/assets/images/0e923270-c9ce-417c-ac35-f688363d9c03.JPG',
-  '/assets/images/0eef7989-3fac-404f-ab68-95e16faa0fa3.JPG',
-  '/assets/images/0fc4b714-19ae-40fb-a202-3351f797b82b.JPG',
-  '/assets/images/1856834e-da60-4d64-ae4b-e9bd825ce4c4.JPG',
-  '/assets/images/2438267c-a19b-4c89-8afd-972181abff17.JPG',
-  '/assets/images/2e6f531b-c8f3-4ecd-b9d3-bb13013e4196.JPG',
-  '/assets/images/32559d80-bf22-4079-9321-c5795dd44213.JPG',
-  '/assets/images/39fc29c8-039e-479d-a4b3-1d30ddfe6e11.JPG',
-  '/assets/images/5896b9c8-c44a-4c13-b29a-04a288447836.JPG',
-  '/assets/images/5c813b4d-2ac2-4a3d-b89b-7dab2040ac0b.JPG',
-  '/assets/images/5f49d460-09af-4e42-a449-22a643212908.JPG',
-  '/assets/images/621f2146-edf4-4ab5-baa0-2044b649eeec.JPG',
-  '/assets/images/69c5d1e6-c1a0-40ce-b1e8-de4877cf2f80.JPG',
-  '/assets/images/7000d5cf-c9cb-47c0-a6da-8de0892f2f78.JPG',
-  '/assets/images/741ba0dc-9541-41a3-a446-e0846b220a8a.JPG',
-  '/assets/images/75d87378-55de-4311-97c3-f3f4706bbc51.JPG',
-  '/assets/images/77f03199-0ebd-4414-9c6c-424b609bfd56.JPG',
-  '/assets/images/78253ee8-c13d-46f7-b35f-1f91d529fd34.JPG',
-  '/assets/images/7a763b32-3972-4c14-93c7-569dd036b331.JPG',
-  '/assets/images/7bff95e4-c19e-41ef-acff-ce81a6dec8a5.JPG',
-  '/assets/images/80b562c4-9f24-4de6-9b19-2ecddf91dc7f.JPG',
-  '/assets/images/8d7d677c-0934-4b6c-8699-46cc013132a5.JPG',
-  '/assets/images/90c25317-249f-403b-87fe-256b5d1b6bf4.JPG',
-  '/assets/images/9e29a998-0b63-4598-84d1-ddb7c1823716.JPG',
-  '/assets/images/a01b8496-bd69-4562-9ccf-54a0a70da8be.JPG',
-  '/assets/images/a3b4fe37-c07c-4017-9e46-fc5e96ef2faa.JPG',
-  '/assets/images/ad13a11e-cae5-474e-9622-48e228539114.JPG',
-  '/assets/images/ad566cba-0818-4f9b-8ff0-e3543b16b936.JPG',
-  '/assets/images/cfaf3928-7438-4a49-8316-9560dfca162a.JPG',
-  '/assets/images/cfe2ba42-d6fb-4842-baec-c76d0fddc142.JPG',
-  '/assets/images/e23b15f1-f367-4772-8083-f5a8925746a6.JPG',
-  '/assets/images/e5d4771b-95cb-44a7-a3eb-74e57a948f9b.JPG',
-  '/assets/images/e91ad1b7-3c70-431c-b52b-6807fcb25c20.JPG',
-  '/assets/images/ef6ce15a-9f4b-433e-b185-37636fbd5bb2.JPG',
-  '/assets/images/f8b58c4d-975c-4c3d-befe-95a619ba2541.JPG',
-  '/assets/images/fed17371-01f0-4764-add3-3ac2fd32704f.JPG',
-] as const;
+type ViewerMedia = Exclude<ShowcaseMedia, { type: 'carousel' }>;
 
 const serviceDetails: ServiceItem[] = [
   { id: 'tea', icon: 'fa-mug-hot', title: 'Executive High Tea', desc: 'Curated premier tea blends, delicate porcelain styling, and fine pastries for high-tier networking intervals.', highlights: ['Single-Origin Ceylon Teas', 'Bespoke Porcelain Layouts', 'Artisanal Pastry Platters', 'Dedicated Tea Sommelier'] },
@@ -73,14 +32,39 @@ const serviceDetails: ServiceItem[] = [
 
 const showcaseMedia: ShowcaseMedia[] = [
   { type: 'image', src: '/assets/images/highteagala.JPG', title: 'High Tea Gala' },
-  { type: 'image', src: '/assets/images/presentation_production.JPG', title: 'Presentation Production' },
+  { type: 'image', src: '/assets/images/presentation_produtions.JPG', title: 'Presentation Production' },
   { type: 'image', src: '/assets/images/snack_station.JPG', title: 'Snack Station' },
   { type: 'carousel', images: galleryCarouselImages, title: 'TeaCare Event Gallery' },
   { type: 'video', src: '/assets/images/executive_table_arrangement.MOV', poster: '/assets/images/executive_table_arrangement_poster.jpg', title: 'Executive Table Arrangement', contentType: 'video/quicktime' },
   { type: 'video', src: '/assets/images/aboutus1.mp4', poster: '/assets/images/aboutus_video_poster.jpg', title: 'About Us', contentType: 'video/mp4' },
 ];
 
-function GalleryCarousel({ images, title }: { images: readonly string[]; title: string }) {
+const viewerMedia: ViewerMedia[] = showcaseMedia.flatMap((media) => {
+  if (media.type === 'carousel') {
+    return media.images.map((src, index) => ({
+      type: 'image' as const,
+      src,
+      title: `Event photo ${index + 1}`,
+    }));
+  }
+  return [media];
+});
+
+function getViewerIndex(mediaIndex: number, imageIndex = 0) {
+  return showcaseMedia.slice(0, mediaIndex).reduce((count, media) => (
+    count + (media.type === 'carousel' ? media.images.length : 1)
+  ), 0) + imageIndex;
+}
+
+function GalleryCarousel({
+  images,
+  title,
+  onOpen,
+}: {
+  images: readonly string[];
+  title: string;
+  onOpen: (imageIndex: number) => void;
+}) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
   const prefersReducedMotion = useSyncExternalStore(
@@ -109,6 +93,12 @@ function GalleryCarousel({ images, title }: { images: readonly string[]; title: 
         className="media-bg gallery-carousel-image"
         style={{ objectFit: 'cover', transition: 'transform 0.6s cubic-bezier(0.16,1,0.3,1)' }}
       />
+      <button
+        type="button"
+        className="media-view-trigger"
+        aria-label={`View ${title}, photo ${activeIndex + 1} of ${images.length}`}
+        onClick={() => onOpen(activeIndex)}
+      />
       <div className="gallery-carousel-controls">
         {!prefersReducedMotion && (
           <button
@@ -134,13 +124,44 @@ function GalleryCarousel({ images, title }: { images: readonly string[]; title: 
 export default function Services() {
   const [selectedService, setSelectedService] = useState<ServiceItem | null>(null);
   const [modalAnim, setModalAnim] = useState(false);
+  const [selectedViewerIndex, setSelectedViewerIndex] = useState<number | null>(null);
+  const isViewerOpen = selectedViewerIndex !== null;
   const gridRef = useRef<HTMLDivElement>(null);
   const mediaGridRef = useRef<HTMLDivElement>(null);
+  const viewerCloseButtonRef = useRef<HTMLButtonElement>(null);
 
   useScrollReveal(mediaGridRef);
 
   const closeModal = () => { setModalAnim(false); setTimeout(() => setSelectedService(null), 300); };
   const openModal = (s: ServiceItem) => { setSelectedService(s); requestAnimationFrame(() => setModalAnim(true)); };
+
+  useEffect(() => {
+    if (!isViewerOpen) return;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    viewerCloseButtonRef.current?.focus();
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setSelectedViewerIndex(null);
+      if (event.key === 'ArrowLeft') {
+        setSelectedViewerIndex((index) => index === null
+          ? null
+          : (index - 1 + viewerMedia.length) % viewerMedia.length);
+      }
+      if (event.key === 'ArrowRight') {
+        setSelectedViewerIndex((index) => index === null
+          ? null
+          : (index + 1) % viewerMedia.length);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isViewerOpen]);
 
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
@@ -215,7 +236,11 @@ export default function Services() {
                   Your browser does not support this video format.
                 </video>
               ) : media.type === 'carousel' ? (
-                <GalleryCarousel images={media.images} title={media.title} />
+                <GalleryCarousel
+                  images={media.images}
+                  title={media.title}
+                  onOpen={(imageIndex) => setSelectedViewerIndex(getViewerIndex(i, imageIndex))}
+                />
               ) : (
                 <Image
                   src={media.src}
@@ -224,6 +249,14 @@ export default function Services() {
                   sizes="(max-width: 768px) 85vw, (max-width: 1200px) 45vw, 30vw"
                   className="media-bg"
                   style={{ objectFit: 'cover', transition: 'transform 0.6s cubic-bezier(0.16,1,0.3,1)' }}
+                />
+              )}
+              {media.type !== 'carousel' && (
+                <button
+                  type="button"
+                  className="media-view-trigger"
+                  aria-label={`View ${media.title}`}
+                  onClick={() => setSelectedViewerIndex(getViewerIndex(i))}
                 />
               )}
               <div className="media-overlay" style={{ 
@@ -242,6 +275,83 @@ export default function Services() {
           ))}
         </div>
       </div>
+
+      {selectedViewerIndex !== null && (
+        <div
+          className="gallery-viewer"
+          role="presentation"
+          onClick={() => setSelectedViewerIndex(null)}
+        >
+          <div
+            className="gallery-viewer__dialog"
+            role="dialog"
+            aria-modal="true"
+            aria-label={viewerMedia[selectedViewerIndex].title}
+            onClick={(event) => event.stopPropagation()}
+          >
+            <button
+              ref={viewerCloseButtonRef}
+              type="button"
+              className="gallery-viewer__close"
+              onClick={() => setSelectedViewerIndex(null)}
+              aria-label="Close media viewer"
+            >
+              <i className="fa-solid fa-xmark" aria-hidden="true" />
+            </button>
+            <button
+              type="button"
+              className="gallery-viewer__arrow gallery-viewer__arrow--previous"
+              onClick={() => setSelectedViewerIndex((index) => index === null
+                ? null
+                : (index - 1 + viewerMedia.length) % viewerMedia.length)}
+              aria-label="View previous gallery item"
+            >
+              <i className="fa-solid fa-arrow-left" aria-hidden="true" />
+            </button>
+            <div className="gallery-viewer__media">
+              {viewerMedia[selectedViewerIndex].type === 'video' ? (
+                <video
+                  key={viewerMedia[selectedViewerIndex].src}
+                  controls
+                  autoPlay
+                  playsInline
+                  className="gallery-viewer__video"
+                  poster={viewerMedia[selectedViewerIndex].poster}
+                  aria-label={viewerMedia[selectedViewerIndex].title}
+                >
+                  <source
+                    src={viewerMedia[selectedViewerIndex].src}
+                    type={viewerMedia[selectedViewerIndex].contentType}
+                  />
+                  Your browser does not support this video format.
+                </video>
+              ) : (
+                <Image
+                  key={viewerMedia[selectedViewerIndex].src}
+                  src={viewerMedia[selectedViewerIndex].src}
+                  alt={viewerMedia[selectedViewerIndex].title}
+                  fill
+                  sizes="100vw"
+                  className="gallery-viewer__image"
+                />
+              )}
+            </div>
+            <button
+              type="button"
+              className="gallery-viewer__arrow gallery-viewer__arrow--next"
+              onClick={() => setSelectedViewerIndex((index) => index === null
+                ? null
+                : (index + 1) % viewerMedia.length)}
+              aria-label="View next gallery item"
+            >
+              <i className="fa-solid fa-arrow-right" aria-hidden="true" />
+            </button>
+            <p className="gallery-viewer__caption" aria-live="polite">
+              {viewerMedia[selectedViewerIndex].title} · {selectedViewerIndex + 1} of {viewerMedia.length}
+            </p>
+          </div>
+        </div>
+      )}
 
       {selectedService && (
         <div onClick={closeModal} style={{ position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', background: modalAnim ? 'rgba(15,20,28,0.85)' : 'rgba(15,20,28,0)', backdropFilter: modalAnim ? 'blur(12px)' : 'blur(0px)', WebkitBackdropFilter: modalAnim ? 'blur(12px)' : 'blur(0px)', zIndex: 9999, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '20px', transition: 'all 0.3s ease' }}>
