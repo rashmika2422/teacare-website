@@ -1,12 +1,68 @@
 'use client';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useSyncExternalStore } from 'react';
 import Image from 'next/image';
 import { SectionHeading, useScrollReveal, revealStyle } from './AnimUtils';
+
+const reducedMotionQuery = '(prefers-reduced-motion: reduce)';
+
+function subscribeToReducedMotion(callback: () => void) {
+  const mediaQuery = window.matchMedia(reducedMotionQuery);
+  mediaQuery.addEventListener('change', callback);
+  return () => mediaQuery.removeEventListener('change', callback);
+}
+
+function getReducedMotionPreference() {
+  return window.matchMedia(reducedMotionQuery).matches;
+}
 
 interface ServiceItem { id: string; icon: string; title: string; desc: string; highlights: string[]; }
 type ShowcaseMedia =
   | { type: 'image'; src: string; title: string }
+  | { type: 'carousel'; images: readonly string[]; title: string }
   | { type: 'video'; src: string; poster: string; title: string; contentType: 'video/mp4' | 'video/quicktime' };
+
+const galleryCarouselImages = [
+  '/assets/images/0581222c-d7bd-4a1e-a362-06a06e411796.JPG',
+  '/assets/images/07185182-b138-4973-ad92-20223397af8b.JPG',
+  '/assets/images/0b975cc0-8d14-49df-b2f6-fb62331c84d7.JPG',
+  '/assets/images/0caefa54-752b-4768-aabd-d4358f3d84b7.JPG',
+  '/assets/images/0e923270-c9ce-417c-ac35-f688363d9c03.JPG',
+  '/assets/images/0eef7989-3fac-404f-ab68-95e16faa0fa3.JPG',
+  '/assets/images/0fc4b714-19ae-40fb-a202-3351f797b82b.JPG',
+  '/assets/images/1856834e-da60-4d64-ae4b-e9bd825ce4c4.JPG',
+  '/assets/images/2438267c-a19b-4c89-8afd-972181abff17.JPG',
+  '/assets/images/2e6f531b-c8f3-4ecd-b9d3-bb13013e4196.JPG',
+  '/assets/images/32559d80-bf22-4079-9321-c5795dd44213.JPG',
+  '/assets/images/39fc29c8-039e-479d-a4b3-1d30ddfe6e11.JPG',
+  '/assets/images/5896b9c8-c44a-4c13-b29a-04a288447836.JPG',
+  '/assets/images/5c813b4d-2ac2-4a3d-b89b-7dab2040ac0b.JPG',
+  '/assets/images/5f49d460-09af-4e42-a449-22a643212908.JPG',
+  '/assets/images/621f2146-edf4-4ab5-baa0-2044b649eeec.JPG',
+  '/assets/images/69c5d1e6-c1a0-40ce-b1e8-de4877cf2f80.JPG',
+  '/assets/images/7000d5cf-c9cb-47c0-a6da-8de0892f2f78.JPG',
+  '/assets/images/741ba0dc-9541-41a3-a446-e0846b220a8a.JPG',
+  '/assets/images/75d87378-55de-4311-97c3-f3f4706bbc51.JPG',
+  '/assets/images/77f03199-0ebd-4414-9c6c-424b609bfd56.JPG',
+  '/assets/images/78253ee8-c13d-46f7-b35f-1f91d529fd34.JPG',
+  '/assets/images/7a763b32-3972-4c14-93c7-569dd036b331.JPG',
+  '/assets/images/7bff95e4-c19e-41ef-acff-ce81a6dec8a5.JPG',
+  '/assets/images/80b562c4-9f24-4de6-9b19-2ecddf91dc7f.JPG',
+  '/assets/images/8d7d677c-0934-4b6c-8699-46cc013132a5.JPG',
+  '/assets/images/90c25317-249f-403b-87fe-256b5d1b6bf4.JPG',
+  '/assets/images/9e29a998-0b63-4598-84d1-ddb7c1823716.JPG',
+  '/assets/images/a01b8496-bd69-4562-9ccf-54a0a70da8be.JPG',
+  '/assets/images/a3b4fe37-c07c-4017-9e46-fc5e96ef2faa.JPG',
+  '/assets/images/ad13a11e-cae5-474e-9622-48e228539114.JPG',
+  '/assets/images/ad566cba-0818-4f9b-8ff0-e3543b16b936.JPG',
+  '/assets/images/cfaf3928-7438-4a49-8316-9560dfca162a.JPG',
+  '/assets/images/cfe2ba42-d6fb-4842-baec-c76d0fddc142.JPG',
+  '/assets/images/e23b15f1-f367-4772-8083-f5a8925746a6.JPG',
+  '/assets/images/e5d4771b-95cb-44a7-a3eb-74e57a948f9b.JPG',
+  '/assets/images/e91ad1b7-3c70-431c-b52b-6807fcb25c20.JPG',
+  '/assets/images/ef6ce15a-9f4b-433e-b185-37636fbd5bb2.JPG',
+  '/assets/images/f8b58c4d-975c-4c3d-befe-95a619ba2541.JPG',
+  '/assets/images/fed17371-01f0-4764-add3-3ac2fd32704f.JPG',
+] as const;
 
 const serviceDetails: ServiceItem[] = [
   { id: 'tea', icon: 'fa-mug-hot', title: 'Executive High Tea', desc: 'Curated premier tea blends, delicate porcelain styling, and fine pastries for high-tier networking intervals.', highlights: ['Single-Origin Ceylon Teas', 'Bespoke Porcelain Layouts', 'Artisanal Pastry Platters', 'Dedicated Tea Sommelier'] },
@@ -16,14 +72,64 @@ const serviceDetails: ServiceItem[] = [
 ];
 
 const showcaseMedia: ShowcaseMedia[] = [
-  { type: 'image', src: '/assets/images/hightea_gala.jpg', title: 'High Tea Gala' },
-  { type: 'image', src: '/assets/images/premium_catering_display.jpg', title: 'Premium Catering Display' },
-  { type: 'image', src: '/assets/images/snacks_stations.jpg', title: 'Snacks Stations' },
-  { type: 'image', src: '/assets/images/presentation_produtions.JPG', title: 'Presentation Productions' },
+  { type: 'image', src: '/assets/images/highteagala.JPG', title: 'High Tea Gala' },
+  { type: 'image', src: '/assets/images/presentation_production.JPG', title: 'Presentation Production' },
+  { type: 'image', src: '/assets/images/snack_station.JPG', title: 'Snack Station' },
+  { type: 'carousel', images: galleryCarouselImages, title: 'TeaCare Event Gallery' },
   { type: 'video', src: '/assets/images/executive_table_arrangement.MOV', poster: '/assets/images/executive_table_arrangement_poster.jpg', title: 'Executive Table Arrangement', contentType: 'video/quicktime' },
   { type: 'video', src: '/assets/images/aboutus1.mp4', poster: '/assets/images/aboutus_video_poster.jpg', title: 'About Us', contentType: 'video/mp4' },
-  { type: 'image', src: '/assets/images/catering_showcase_custom.jpeg', title: 'Catering Showcase' },
 ];
+
+function GalleryCarousel({ images, title }: { images: readonly string[]; title: string }) {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(true);
+  const prefersReducedMotion = useSyncExternalStore(
+    subscribeToReducedMotion,
+    getReducedMotionPreference,
+    () => true,
+  );
+
+  useEffect(() => {
+    if (!isPlaying || prefersReducedMotion) return;
+
+    const intervalId = window.setInterval(() => {
+      setActiveIndex((index) => (index + 1) % images.length);
+    }, 3500);
+    return () => window.clearInterval(intervalId);
+  }, [images.length, isPlaying, prefersReducedMotion]);
+
+  return (
+    <>
+      <Image
+        key={images[activeIndex]}
+        src={images[activeIndex]}
+        alt={`${title}: event photo ${activeIndex + 1} of ${images.length}`}
+        fill
+        sizes="(max-width: 768px) 85vw, (max-width: 1200px) 45vw, 30vw"
+        className="media-bg gallery-carousel-image"
+        style={{ objectFit: 'cover', transition: 'transform 0.6s cubic-bezier(0.16,1,0.3,1)' }}
+      />
+      <div className="gallery-carousel-controls">
+        {!prefersReducedMotion && (
+          <button
+            type="button"
+            onClick={() => setIsPlaying((playing) => !playing)}
+            aria-label={isPlaying ? 'Pause event photo slideshow' : 'Play event photo slideshow'}
+          >
+            {isPlaying ? 'Pause' : 'Play'}
+          </button>
+        )}
+        <button
+          type="button"
+          onClick={() => setActiveIndex((index) => (index + 1) % images.length)}
+          aria-label="Show next event photo"
+        >
+          Next
+        </button>
+      </div>
+    </>
+  );
+}
 
 export default function Services() {
   const [selectedService, setSelectedService] = useState<ServiceItem | null>(null);
@@ -50,9 +156,6 @@ export default function Services() {
     return () => observer.disconnect();
   }, []);
 
-    const [showAllMedia, setShowAllMedia] = useState(false);
-    const displayedMedia = showAllMedia ? showcaseMedia : showcaseMedia.slice(0, 6);
-
     return (
     <section id="services" className="services-section">
       <div className="ambient-glow glow-2" style={{ bottom: '-200px', left: '-250px' }} />
@@ -77,13 +180,16 @@ export default function Services() {
         <SectionHeading subtitle="Visual Excellence" title="Our Signature" goldText="Event Environments" description="A glimpse into the atmosphere and precision we engineer for every corporate occasion." />
         
         <div className="media-showcase-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '25px', marginTop: '40px' }}>
-          {displayedMedia.map((media, i) => (
+          {showcaseMedia.map((media, i) => (
             <div key={i} data-reveal style={{ 
               ...revealStyle(i * 0.15), 
               position: 'relative', height: '300px', borderRadius: '16px', overflow: 'hidden', 
               boxShadow: '0 15px 35px rgba(0,0,0,0.4)', border: '1px solid rgba(255,255,255,0.08)',
               cursor: 'pointer' 
             }}
+            role={media.type === 'carousel' ? 'group' : undefined}
+            aria-roledescription={media.type === 'carousel' ? 'carousel' : undefined}
+            aria-label={media.type === 'carousel' ? media.title : undefined}
             onMouseOver={(e) => {
               const img = e.currentTarget.querySelector('.media-bg') as HTMLElement;
               const overlay = e.currentTarget.querySelector('.media-overlay') as HTMLElement;
@@ -108,6 +214,8 @@ export default function Services() {
                   <source src={media.src} type={media.contentType} />
                   Your browser does not support this video format.
                 </video>
+              ) : media.type === 'carousel' ? (
+                <GalleryCarousel images={media.images} title={media.title} />
               ) : (
                 <Image
                   src={media.src}
@@ -133,20 +241,6 @@ export default function Services() {
             </div>
           ))}
         </div>
-        
-        {showcaseMedia.length > 6 && (
-          <div data-reveal style={{ textAlign: 'center', marginTop: '50px', paddingBottom: '20px', width: '100%', ...revealStyle(0.2) }}>
-            <button onClick={() => setShowAllMedia(!showAllMedia)} className="cta-btn secondary" style={{
-              background: 'transparent', border: '1px solid rgba(243,156,18,0.5)', color: '#f39c12',
-              padding: '12px 30px', borderRadius: '30px', cursor: 'pointer', fontSize: '0.9rem',
-              fontWeight: 600, transition: 'all 0.3s ease', display: 'inline-flex', alignItems: 'center', gap: '8px'
-            }}
-            onMouseOver={(e) => { e.currentTarget.style.background = 'rgba(243,156,18,0.1)'; }}
-            onMouseOut={(e) => { e.currentTarget.style.background = 'transparent'; }}>
-              {showAllMedia ? 'Show Less' : 'See All Environments'} <i className={`fa-solid fa-chevron-${showAllMedia ? 'up' : 'down'}`} />
-            </button>
-          </div>
-        )}
       </div>
 
       {selectedService && (

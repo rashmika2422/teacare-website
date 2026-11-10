@@ -409,6 +409,37 @@ section { padding: 120px 0; position: relative; }
 }
 .parallax-card h4 { color: #fff; font-size: 1.25rem; margin: 10px 0 6px; }
 .parallax-card p { color: var(--text-body); font-size: 0.85rem; line-height: 1.5; }
+.gallery-carousel-image { animation: gallery-carousel-fade 0.6s ease both; }
+.gallery-carousel-controls {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    z-index: 3;
+    display: flex;
+    gap: 8px;
+}
+.gallery-carousel-controls button {
+    padding: 8px 12px;
+    border: 1px solid rgba(255,255,255,0.65);
+    border-radius: 999px;
+    background: rgba(15,20,28,0.75);
+    color: #fff;
+    font: inherit;
+    font-size: 0.78rem;
+    cursor: pointer;
+    backdrop-filter: blur(6px);
+}
+.gallery-carousel-controls button:focus-visible {
+    outline: 2px solid #f39c12;
+    outline-offset: 3px;
+}
+@keyframes gallery-carousel-fade {
+    from { opacity: 0.4; }
+    to { opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .gallery-carousel-image { animation: none; }
+}
 
 /* -------- 13. ESTIMATOR SECTION -------- */
 .estimator-section { padding: 100px 8%; background: #22272e; position: relative; overflow: hidden; }

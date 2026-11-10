@@ -6,20 +6,20 @@ import ScrollProgress from '../../components/ScrollProgress';
 
 const aboutImages = [
   {
-    src: '/assets/images/image01.JPG',
-    alt: 'TeaCare team preparing a tea service station',
+    src: '/assets/images/0caefa54-752b-4768-aabd-d4358f3d84b7.JPG',
+    alt: 'TeaCare team preparing a corporate hospitality service',
   },
   {
-    src: '/assets/images/premium_catering_display.jpg',
-    alt: 'Premium catering display prepared for a corporate event',
+    src: '/assets/images/5c813b4d-2ac2-4a3d-b89b-7dab2040ac0b.JPG',
+    alt: 'Corporate buffet and tableware arranged for an event',
   },
   {
-    src: '/assets/images/c39b0012-f202-44c8-91e8-9751b14876a0.JPG',
-    alt: 'TeaCare hospitality service at a corporate event',
+    src: '/assets/images/2e6f531b-c8f3-4ecd-b9d3-bb13013e4196.JPG',
+    alt: 'Refreshment station prepared for a corporate event',
   },
   {
-    src: '/assets/images/presentation_produtions.JPG',
-    alt: 'TeaCare presentation and production setup for a corporate event',
+    src: '/assets/images/39fc29c8-039e-479d-a4b3-1d30ddfe6e11.JPG',
+    alt: 'TeaCare catering selection prepared for guests',
   },
 ];
 
@@ -134,7 +134,7 @@ export default function AboutPage() {
         <div className="about-page-container story-intro-grid">
           <div className="story-image-wrap">
             <Image
-              src="/assets/images/team.JPG"
+              src="/assets/images/7000d5cf-c9cb-47c0-a6da-8de0892f2f78.JPG"
               alt="TeaCare team supporting a hospitality-focused corporate event"
               width={1200}
               height={900}
